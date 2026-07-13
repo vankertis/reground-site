@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reground — Privacy Policy</title>
+<meta name="description" content="Reground collects no data. No account, no server, no analytics — everything you write, draw, or practice stays on your device.">
+<meta name="theme-color" content="#f9f6f1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131417" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%235d84aa' d='M32 6c11 0 22 8.5 23.5 20.5C57 38.5 50 52 37.5 55.5 25 59 11.5 52 8 39.5 4.5 27 11 14 21.5 9.2 25 7.1 28.5 6 32 6z'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --canvas: #f9f6f1;
+    --surface: #ffffff;
+    --ink: #25272e;
+    --muted: #565962;
+    --line: rgba(37, 39, 46, .09);
+    --panic: #5d84aa;
+    --tense: #668e73;
+    --ruminating: #8771ab;
+    --serif: ui-serif, "New York", Georgia, "Iowan Old Style", "Times New Roman", serif;
+    --sans: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --canvas: #131417; --surface: #202125; --ink: #eceae6; --muted: #a6a49d;
+      --line: rgba(236, 234, 230, .12);
+      --panic: #7aa2c8; --tense: #82ab90; --ruminating: #a592c8;
+    }
+  }
+  html[data-theme="dark"] {
+    --canvas: #131417; --surface: #202125; --ink: #eceae6; --muted: #a6a49d;
+    --line: rgba(236, 234, 230, .12);
+    --panic: #7aa2c8; --tense: #82ab90; --ruminating: #a592c8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2 { font-family: var(--serif); font-weight: 500; text-wrap: balance; }
+  p { text-wrap: pretty; }
+  a { color: inherit; }
+
+  .atmosphere {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(52% 38% at 82% 4%, color-mix(in srgb, var(--panic) 14%, transparent), transparent 70%),
+      radial-gradient(44% 34% at 6% 46%, color-mix(in srgb, var(--tense) 8%, transparent), transparent 70%);
+  }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding-inline: clamp(20px, 4vw, 48px); }
+  .wrap-wide { max-width: 1120px; }
+
+  header.site { padding-block: clamp(20px, 3.5vh, 36px); }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  /* W1s lockup: "Re" standing on the symmetric hill, the rest walks free. */
+  .wordmark { font-family: var(--serif); font-size: 1.45rem; letter-spacing: .01em; text-decoration: none; display: inline-block; }
+  .wordmark .re { position: relative; }
+  .wordmark .re svg { position: absolute; left: -2px; bottom: -6px; width: calc(100% + 4px); height: 6px; overflow: visible; }
+  .wordmark .re path { stroke: var(--panic); stroke-width: 2.4; fill: none; stroke-linecap: round; }
+  .bar-back {
+    font-size: .92rem; font-weight: 600; text-decoration: none;
+    border: 1px solid var(--line); border-radius: 999px; padding: 12px 20px;
+    background: color-mix(in srgb, var(--surface) 65%, transparent);
+    transition: border-color .2s ease;
+  }
+  .bar-back:hover { border-color: color-mix(in srgb, var(--ink) 30%, transparent); }
+
+  main { padding-block: clamp(36px, 7vh, 72px) clamp(72px, 10vh, 120px); }
+
+  h1 { font-size: clamp(2.1rem, 4.5vw, 3rem); line-height: 1.1; letter-spacing: -.012em; }
+  .meta { color: var(--muted); font-size: .95rem; margin-top: 10px; }
+
+  .promise {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 20px; padding: clamp(20px, 3vw, 28px);
+    margin-block: clamp(28px, 4vh, 40px);
+    box-shadow: 0 24px 60px -36px rgba(37, 39, 46, .25);
+  }
+  .promise p { font-family: var(--serif); font-size: 1.15rem; line-height: 1.55; }
+  .promise .stays { color: var(--tense); }
+
+  h2 {
+    font-size: clamp(1.35rem, 2.4vw, 1.65rem); line-height: 1.2;
+    margin-top: clamp(36px, 5vh, 52px);
+    display: flex; align-items: center; gap: 12px;
+  }
+  h2::before {
+    content: ""; width: 13px; height: 13px; flex: none;
+    background: var(--tint, var(--panic));
+    border-radius: 46% 54% 57% 43% / 51% 44% 56% 49%;
+  }
+  h2 + p, p + p { margin-top: 12px; }
+
+  main p { color: var(--muted); max-width: 62ch; }
+  main p strong { color: var(--ink); font-weight: 600; }
+  main a { color: color-mix(in srgb, var(--panic) 70%, var(--ink)); }
+
+  .colophon { margin-top: clamp(40px, 6vh, 56px); font-size: .95rem; }
+
+  footer { border-top: 1px solid var(--line); padding-block: 32px 44px; }
+  footer, footer a { color: var(--muted); font-size: .9rem; }
+  .foot-grid { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; align-items: baseline; }
+  footer nav { display: flex; gap: 22px; flex-wrap: wrap; }
+
+  :focus-visible { outline: 2px solid var(--panic); outline-offset: 3px; border-radius: 6px; }
+</style>
+</head>
+<body>
+<div class="atmosphere" aria-hidden="true"></div>
+
+<header class="site">
+  <div class="wrap wrap-wide bar">
+    <a class="wordmark" href="index.html"><span class="re">Re<svg viewBox="0 0 40 8" preserveAspectRatio="none" aria-hidden="true"><path d="M1.5 6.2 Q20 1.2 38.5 6.2"/></svg></span>ground</a>
+    <a class="bar-back" href="index.html">About the app</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Privacy policy</h1>
+  <p class="meta">Effective 8 July 2026 · applies to the Reground iOS app</p>
+
+  <div class="promise">
+    <p><strong>The short version:</strong> Reground collects no data about you. There is no account,
+    no server, and no analytics. Everything you write, draw, or practice
+    <span class="stays">stays on your device.</span> We couldn&rsquo;t read your journal even if we
+    wanted to — it never reaches us.</p>
+  </div>
+
+  <h2 style="--tint: var(--panic)">What we collect</h2>
+  <p>Nothing. Reground has no sign-up, no login, and no backend. The app never transmits your
+  content, your usage, or your identity to us or to anyone else. We do not use analytics,
+  advertising, or tracking of any kind, and the app contains no third-party SDKs.</p>
+
+  <h2 style="--tint: var(--tense)">Where your content lives</h2>
+  <p>Journal entries, thought records, drawings, session history, favorites, and settings are
+  stored only in the app&rsquo;s local storage on your device. They are included in your device
+  backups if you use iCloud Backup or local backups (that is between you and Apple — we have
+  no access). Deleting the app permanently deletes all of this content.</p>
+
+  <h2 style="--tint: var(--ruminating)">Purchases</h2>
+  <p>Reground offers one optional one-time purchase, processed entirely by Apple through your
+  Apple&nbsp;ID. We never see your payment details, name, or address. Apple provides us with
+  no personally identifying information about buyers. Purchases can be restored on any device
+  signed into the same Apple&nbsp;ID, and refunds are handled by Apple under their standard
+  terms.</p>
+
+  <h2 style="--tint: var(--panic)">Health information</h2>
+  <p>Anything you write in Reground may be sensitive to you — that is exactly why it never leaves
+  your phone. Reground is a self-care toolkit, not medical care, and it does not diagnose,
+  treat, or monitor any condition. If you are struggling, a mental-health professional can
+  help in ways an app can&rsquo;t.</p>
+
+  <h2 style="--tint: var(--tense)">Children</h2>
+  <p>Reground is not directed at children under 13, and since we collect no data from anyone,
+  we collect no data from children.</p>
+
+  <h2 style="--tint: var(--ruminating)">Changes to this policy</h2>
+  <p>If Reground ever adds a feature that changes this picture (for example, optional iCloud
+  sync), this policy will be updated first, the change will be opt-in, and the app will say
+  so plainly. The current promise stands: by default, nothing leaves your phone.</p>
+
+  <h2 style="--tint: var(--panic)">Contact</h2>
+  <p>Questions? Write to <a href="mailto:mmcydesign@gmail.com">mmcydesign@gmail.com</a>.</p>
+
+  <p class="colophon">Reground is developed and published by Maksym Chervynskyi.</p>
+</main>
+
+<footer>
+  <div class="wrap wrap-wide foot-grid">
+    <span>© 2026 Reground · made quietly</span>
+    <nav aria-label="Footer">
+      <a href="index.html">About the app</a>
+      <a href="mailto:mmcydesign@gmail.com">mmcydesign@gmail.com</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var t = new URLSearchParams(location.search).get('theme');
+    if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+  })();
+</script>
+</body>
+</html>
