@@ -3,41 +3,645 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Reground — a self-care toolkit</title>
-<meta name="description" content="Calming techniques organized by how you feel right now. Private by design. Pay once. Coming soon to the App Store.">
+<title>Reground — a self-care toolkit for the moment your chest tightens</title>
+<meta name="description" content="22 calming techniques with honest evidence labels, organized by how you feel right now. No account, no analytics, no subscription. Free to try, $5.99 once.">
+<meta property="og:title" content="Reground — Self-Care Toolkit">
+<meta property="og:description" content="Open the app, tap once, and the phone breathes with you. Private by design. Pay once, no subscription.">
 <meta name="theme-color" content="#f9f6f1" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#131417" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%235d84aa' d='M32 6c11 0 22 8.5 23.5 20.5C57 38.5 50 52 37.5 55.5 25 59 11.5 52 8 39.5 4.5 27 11 14 21.5 9.2 25 7.1 28.5 6 32 6z'/%3E%3C/svg%3E">
 <style>
   :root {
-    --canvas: #f9f6f1; --ink: #25272e; --muted: #565962; --panic: #5d84aa;
-    --serif: ui-serif, "New York", Georgia, "Iowan Old Style", serif;
-    --sans: ui-rounded, -apple-system, system-ui, sans-serif;
+    --canvas: #f9f6f1;
+    --surface: #ffffff;
+    --ink: #25272e;
+    --muted: #565962;
+    --line: rgba(37, 39, 46, .09);
+    --panic: #5d84aa;
+    --ruminating: #8771ab;
+    --tense: #668e73;
+    --low: #b97f47;
+    --angry: #ac6a62;
+    --sleepless: #6a729d;
+    --orb-text: #ffffff;
+    --badge-bg: #1d1e23;
+    --badge-ink: #ffffff;
+    --shadow: 0 24px 60px -28px rgba(37, 39, 46, .35);
+    --serif: ui-serif, "New York", Georgia, "Iowan Old Style", "Times New Roman", serif;
+    --sans: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   }
   @media (prefers-color-scheme: dark) {
-    :root { --canvas: #131417; --ink: #eceae6; --muted: #a6a49d; --panic: #7aa2c8; }
+    :root:not([data-theme="light"]) {
+      --canvas: #131417;
+      --surface: #202125;
+      --ink: #eceae6;
+      --muted: #a6a49d;
+      --line: rgba(236, 234, 230, .12);
+      --panic: #7aa2c8;
+      --ruminating: #a592c8;
+      --tense: #82ab90;
+      --low: #d9a56f;
+      --angry: #cf8e86;
+      --sleepless: #8b92bb;
+      --orb-text: #10131a;
+      --badge-bg: #eceae6;
+      --badge-ink: #16171b;
+      --shadow: 0 24px 60px -28px rgba(0, 0, 0, .8);
+    }
   }
-  * { margin: 0; box-sizing: border-box; }
-  body { background: var(--canvas); color: var(--ink); font-family: var(--sans);
-         min-height: 100svh; display: grid; place-items: center; padding: 24px;
-         background-image: radial-gradient(circle at 85% 8%, color-mix(in srgb, var(--panic) 14%, transparent), transparent 60%); }
-  main { max-width: 34rem; text-align: center; }
-  .wordmark { font-family: var(--serif); font-size: 1.5rem; display: inline-block; margin-bottom: 2rem; }
+  html[data-theme="dark"] {
+    --canvas: #131417; --surface: #202125; --ink: #eceae6; --muted: #a6a49d;
+    --line: rgba(236, 234, 230, .12);
+    --panic: #7aa2c8; --ruminating: #a592c8; --tense: #82ab90;
+    --low: #d9a56f; --angry: #cf8e86; --sleepless: #8b92bb;
+    --orb-text: #10131a; --badge-bg: #eceae6; --badge-ink: #16171b;
+    --shadow: 0 24px 60px -28px rgba(0, 0, 0, .8);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3 { font-family: var(--serif); font-weight: 500; text-wrap: balance; }
+  p { text-wrap: pretty; }
+  a { color: inherit; }
+  img { max-width: 100%; height: auto; display: block; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding-inline: clamp(20px, 4vw, 48px); }
+
+  /* ---------- Atmosphere ---------- */
+  .atmosphere {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(52% 38% at 82% 4%, color-mix(in srgb, var(--panic) 16%, transparent), transparent 70%),
+      radial-gradient(44% 34% at 6% 38%, color-mix(in srgb, var(--tense) 9%, transparent), transparent 70%),
+      radial-gradient(50% 40% at 88% 92%, color-mix(in srgb, var(--ruminating) 10%, transparent), transparent 72%);
+  }
+
+  /* ---------- Header ---------- */
+  header { padding-block: clamp(20px, 3.5vh, 36px); }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  /* W1s lockup: "Re" standing on the symmetric hill, the rest walks free. */
+  .wordmark { font-family: var(--serif); font-size: 1.45rem; letter-spacing: .01em; text-decoration: none; display: inline-block; }
   .wordmark .re { position: relative; }
   .wordmark .re svg { position: absolute; left: -2px; bottom: -6px; width: calc(100% + 4px); height: 6px; overflow: visible; }
   .wordmark .re path { stroke: var(--panic); stroke-width: 2.4; fill: none; stroke-linecap: round; }
-  h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1.2; text-wrap: balance; }
-  p { color: var(--muted); margin-top: 1rem; line-height: 1.6; }
-  a.privacy { color: var(--muted); display: inline-block; margin-top: 2.5rem; font-size: .9rem; }
+  .bar-cta {
+    font-size: .92rem; font-weight: 600; text-decoration: none;
+    border: 1px solid var(--line); border-radius: 999px; padding: 12px 20px;
+    background: color-mix(in srgb, var(--surface) 65%, transparent);
+    transition: border-color .2s ease;
+  }
+  .bar-cta:hover { border-color: color-mix(in srgb, var(--ink) 30%, transparent); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding-block: clamp(28px, 7vh, 84px) clamp(56px, 9vh, 110px); }
+  .hero-grid {
+    display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+    gap: clamp(32px, 5vw, 72px); align-items: center;
+  }
+  .hero h1 {
+    font-size: clamp(2.55rem, 5.4vw, 4.35rem);
+    line-height: 1.06;
+    letter-spacing: -.015em;
+    max-width: 13ch;
+  }
+  .hero .lede {
+    margin-top: clamp(18px, 2.5vh, 26px);
+    font-size: clamp(1.08rem, 1.5vw, 1.22rem);
+    color: var(--muted);
+    max-width: 46ch;
+  }
+  .hero .lede strong { color: var(--ink); font-weight: 600; }
+
+  .cta-row { margin-top: clamp(26px, 4vh, 40px); display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .appstore {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--badge-bg); color: var(--badge-ink);
+    border-radius: 14px; padding: 12px 22px 12px 18px; text-decoration: none;
+    transition: transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease;
+    box-shadow: 0 10px 30px -14px rgba(37,39,46,.45);
+  }
+  .appstore:hover { transform: translateY(-2px); }
+  .appstore svg { width: 26px; height: 26px; flex: none; }
+  .appstore .lines { display: flex; flex-direction: column; line-height: 1.15; }
+  .appstore .small { font-size: .68rem; font-weight: 500; opacity: .85; letter-spacing: .01em; }
+  .appstore .big { font-size: 1.18rem; font-weight: 600; letter-spacing: -.01em; }
+  .price-note { font-size: .95rem; color: var(--muted); line-height: 1.45; }
+  .price-note b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- Breathing orb ---------- */
+  .pacer { display: flex; flex-direction: column; align-items: center; gap: 26px; }
+  .orb-stage { position: relative; width: min(340px, 72vw); aspect-ratio: 1; display: grid; place-items: center; }
+  .dots { position: absolute; inset: 0; animation: drift 110s linear infinite; }
+  .dots span { position: absolute; border-radius: 50%; background: var(--panic); opacity: .45; }
+  @keyframes drift { to { transform: rotate(360deg); } }
+  .orb-scale {
+    width: 62%; aspect-ratio: 1; display: grid; place-items: center; position: relative;
+    transform: scale(.82);
+    transition: transform 4s cubic-bezier(.45, .05, .45, .95);
+  }
+  .orb-scale::before {
+    content: ""; position: absolute; inset: -13%;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--panic) 22%, transparent);
+    filter: blur(2px);
+  }
+  .orb {
+    position: absolute; inset: 0; border-radius: 50%;
+    background: radial-gradient(120% 120% at 30% 22%,
+      color-mix(in srgb, var(--panic) 78%, white) 0%,
+      var(--panic) 55%,
+      color-mix(in srgb, var(--panic) 82%, black) 100%);
+    display: grid; place-items: center; text-align: center;
+  }
+  .orb .phase { font-family: var(--serif); font-size: clamp(1.35rem, 2.2vw, 1.7rem); color: var(--orb-text); }
+  .orb .count { font-family: var(--serif); font-size: 1.15rem; color: var(--orb-text); opacity: .85; margin-top: 2px; }
+  .pacer-caption { text-align: center; color: var(--muted); font-size: .95rem; max-width: 34ch; }
+  .pacer-caption .rhythm { font-family: var(--serif); color: color-mix(in srgb, var(--panic) 70%, var(--ink)); font-size: 1.05rem; display: block; margin-top: 4px; }
+  @media (prefers-reduced-motion: reduce) {
+    .dots { animation: none; }
+    .orb-scale { transition: none; transform: scale(.92); }
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding-block: clamp(64px, 11vh, 132px); }
+  .section-head { max-width: 62ch; }
+  .section-head h2 {
+    font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+    line-height: 1.12; letter-spacing: -.012em;
+  }
+  .section-head p { margin-top: 14px; color: var(--muted); font-size: 1.08rem; max-width: 52ch; }
+
+  /* Felt states */
+  .states { margin-top: clamp(36px, 6vh, 64px); border-top: 1px solid var(--line); }
+  .state {
+    display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.4fr);
+    gap: clamp(18px, 3vw, 48px);
+    padding: clamp(26px, 4vh, 40px) 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+  .state-name { display: flex; align-items: flex-start; gap: 16px; }
+  .state-blob { width: 30px; height: 30px; flex: none; margin-top: 7px; background: var(--tint); }
+  .state:nth-child(odd) .state-blob { border-radius: 44% 56% 58% 42% / 52% 43% 57% 48%; }
+  .state:nth-child(even) .state-blob { border-radius: 58% 42% 46% 54% / 44% 57% 43% 56%; }
+  .state-name h3 { font-size: clamp(1.4rem, 2.4vw, 1.85rem); line-height: 1.15; }
+  .state-name .sub { color: var(--muted); font-size: .97rem; margin-top: 4px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; align-content: flex-start; }
+  .chip {
+    display: inline-flex; align-items: baseline; gap: 8px;
+    background: color-mix(in srgb, var(--tint) 13%, var(--surface));
+    border: 1px solid color-mix(in srgb, var(--tint) 22%, transparent);
+    border-radius: 12px; padding: 8px 14px;
+    font-size: .95rem; font-weight: 550;
+  }
+  .chip .min { color: var(--muted); font-size: .82rem; font-weight: 500; }
+  .chip .free {
+    font-size: .75rem; font-weight: 650; letter-spacing: .02em;
+    color: color-mix(in srgb, var(--tint) 55%, var(--ink));
+    border: 1px solid color-mix(in srgb, var(--tint) 45%, transparent);
+    border-radius: 999px; padding: 1px 8px; align-self: center;
+  }
+  .states-foot { margin-top: 22px; color: var(--muted); font-size: .95rem; }
+
+  /* Phones */
+  .phones-section .section-head { margin-inline: auto; text-align: center; }
+  .phones-section .section-head p { margin-inline: auto; }
+  .phones {
+    margin-top: clamp(40px, 7vh, 76px);
+    display: flex; justify-content: center; align-items: flex-start;
+    gap: clamp(18px, 3.5vw, 44px); flex-wrap: wrap;
+  }
+  .phone { width: min(280px, 78vw); }
+  .phone:nth-child(2) { margin-top: clamp(0px, 4vh, 52px); }
+  .phone:nth-child(3) { margin-top: clamp(0px, 8vh, 104px); }
+  .phone .frame {
+    border-radius: 15.5% / 7.2%;
+    padding: 3.6%;
+    background: #17181c;
+    box-shadow: var(--shadow), inset 0 0 0 2px rgba(255,255,255,.06);
+  }
+  .phone img { border-radius: 12.5% / 5.8%; }
+  .phone figcaption { margin-top: 16px; text-align: center; color: var(--muted); font-size: .93rem; }
+  .phone figcaption b { color: var(--ink); font-weight: 600; font-family: var(--serif); font-size: 1.02rem; letter-spacing: .005em; display: block; }
+
+  /* Honesty pillars */
+  .pillar {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(24px, 4vw, 72px);
+    padding: clamp(44px, 7vh, 72px) 0;
+    align-items: center;
+  }
+  .pillar + .pillar { border-top: 1px solid var(--line); }
+  .pillar h2 { font-size: clamp(1.7rem, 3vw, 2.35rem); line-height: 1.12; letter-spacing: -.01em; }
+  .pillar .body { color: var(--muted); font-size: 1.06rem; margin-top: 14px; max-width: 44ch; }
+  .pillar .body strong { color: var(--ink); font-weight: 600; }
+  .pillar:nth-child(even) > .pillar-aside { order: -1; }
+
+  .evidence-stack { display: flex; flex-direction: column; gap: 14px; }
+  .evidence {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 16px; padding: 16px 20px;
+  }
+  .evidence .t { font-family: var(--serif); font-size: 1.08rem; }
+  .evidence .tag {
+    font-size: .8rem; font-weight: 600; white-space: nowrap;
+    border-radius: 999px; padding: 4px 12px;
+    background: color-mix(in srgb, var(--tint, var(--panic)) 14%, transparent);
+    color: color-mix(in srgb, var(--tint, var(--panic)) 55%, var(--ink));
+  }
+
+  .privacy-statement {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+    line-height: 1.3;
+  }
+  .privacy-statement .stays { color: var(--tense); }
+
+  .price-card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 24px; padding: clamp(28px, 3.5vw, 40px);
+    box-shadow: var(--shadow);
+    max-width: 420px;
+  }
+  .price-card .amount { font-family: var(--serif); font-size: clamp(2.6rem, 4.5vw, 3.4rem); line-height: 1; }
+  .price-card .amount small { font-size: 1.1rem; color: var(--muted); font-family: var(--sans); margin-left: 8px; }
+  .price-card ul { list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+  .price-card li { display: flex; gap: 10px; align-items: baseline; font-size: .99rem; }
+  .price-card li::before { content: "·"; font-family: var(--serif); font-size: 1.4rem; line-height: 1; color: var(--low); }
+  .price-card .vs { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: .92rem; }
+
+  /* Closing */
+  .closing { text-align: center; padding-bottom: clamp(80px, 12vh, 150px); }
+  .closing .mini-orb {
+    width: 54px; height: 54px; margin: 0 auto 26px;
+    background: radial-gradient(120% 120% at 30% 22%, color-mix(in srgb, var(--panic) 75%, white), var(--panic));
+    border-radius: 47% 53% 56% 44% / 52% 45% 55% 48%;
+    animation: minibreathe 8s cubic-bezier(.45,.05,.45,.95) infinite;
+  }
+  @keyframes minibreathe { 0%,100% { transform: scale(.86); } 50% { transform: scale(1.08); } }
+  @media (prefers-reduced-motion: reduce) { .closing .mini-orb { animation: none; } }
+  .closing h2 { font-size: clamp(2rem, 4.4vw, 3.3rem); letter-spacing: -.012em; }
+  .closing p { margin: 16px auto 0; color: var(--muted); max-width: 44ch; }
+  .closing .cta-row { justify-content: center; }
+
+  /* Footer */
+  footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
+  .foot-grid { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; align-items: baseline; }
+  footer, footer a { color: var(--muted); font-size: .9rem; }
+  footer nav { display: flex; gap: 22px; flex-wrap: wrap; }
+  .disclaimer { margin-top: 18px; font-size: .85rem; color: var(--muted); max-width: 68ch; }
+
+  /* Reveal on scroll (progressive enhancement) */
+  @media (prefers-reduced-motion: no-preference) {
+    html.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1); }
+    html.js .reveal.in { opacity: 1; transform: none; }
+  }
+
+  /* Responsive */
+  @media (max-width: 880px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .pacer { margin-top: 8px; }
+    .state { grid-template-columns: 1fr; gap: 16px; }
+    .pillar { grid-template-columns: 1fr; }
+    .pillar:nth-child(even) > .pillar-aside { order: 0; }
+    .phone:nth-child(2), .phone:nth-child(3) { margin-top: 0; }
+  }
+
+  :focus-visible { outline: 2px solid var(--panic); outline-offset: 3px; border-radius: 6px; }
 </style>
 </head>
 <body>
+<div class="atmosphere" aria-hidden="true"></div>
+
+<header class="wrap">
+  <div class="bar">
+    <a class="wordmark" href="#"><span class="re">Re<svg viewBox="0 0 40 8" preserveAspectRatio="none" aria-hidden="true"><path d="M1.5 6.2 Q20 1.2 38.5 6.2"/></svg></span>ground</a>
+    <a class="bar-cta" href="#get">Get the app</a>
+  </div>
+</header>
+
 <main>
-  <div class="wordmark"><span class="re">Re<svg viewBox="0 0 40 8" preserveAspectRatio="none" aria-hidden="true"><path d="M1.5 6.2 Q20 1.2 38.5 6.2"/></svg></span>ground</div>
-  <h1>For the moment your chest tightens.</h1>
-  <p>A self-care toolkit of calming techniques, organized by how you feel right now.
-     Private by design. Pay once. Coming soon to the App Store.</p>
-  <a class="privacy" href="privacy.html">Privacy policy</a>
+  <!-- Hero -->
+  <section class="hero wrap" aria-labelledby="hero-h">
+    <div class="hero-grid">
+      <div>
+        <h1 id="hero-h">For the moment your chest tightens.</h1>
+        <p class="lede">The wrong moment to browse a library. Reground is a pocket toolkit of
+          <strong>22 calming techniques</strong> — the kind therapists actually teach —
+          organized by how you feel right now. Open the app, tap once, and the phone
+          breathes with you — until the ground feels steady again.</p>
+        <div class="cta-row">
+          <a class="appstore" href="#get" aria-label="Reground is coming soon to the App Store — jump to details">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z"/></svg>
+            <span class="lines"><span class="small">Coming soon on the</span><span class="big">App Store</span></span>
+          </a>
+          <p class="price-note"><b>Free to try.</b> $5.99 once, if you like it.<br>No subscription.</p>
+        </div>
+      </div>
+
+      <div class="pacer">
+        <div class="orb-stage" role="img" aria-label="A soft blue orb that swells and settles in a box-breathing rhythm: in for four, hold for four, out for four, hold for four.">
+          <div class="dots" id="dots" aria-hidden="true"></div>
+          <div class="orb-scale" id="orbScale">
+            <div class="orb">
+              <div>
+                <div class="phase" id="phaseLabel">Breathe in</div>
+                <div class="count" id="phaseCount">4</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="pacer-caption">This is Box Breathing — the real exercise, running right here. Follow it for one minute.
+          <span class="rhythm">In 4 · Hold 4 · Out 4 · Hold 4</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Felt states -->
+  <section class="wrap reveal" aria-labelledby="states-h">
+    <div class="section-head">
+      <h2 id="states-h">What do you need right now?</h2>
+      <p>Not a course. Not a library to browse. Reground asks one question and hands you
+        the right tool — each one takes between one and five minutes.</p>
+    </div>
+
+    <div class="states">
+      <div class="state" style="--tint: var(--panic)">
+        <div class="state-name">
+          <span class="state-blob" aria-hidden="true"></span>
+          <div><h3>I&rsquo;m panicking</h3><p class="sub">Settle your body first</p></div>
+        </div>
+        <div class="chips">
+          <span class="chip">Box Breathing <span class="free">free</span></span>
+          <span class="chip">Physiological Sigh <span class="free">free</span></span>
+          <span class="chip">5·4·3·2·1 Senses <span class="free">free</span></span>
+          <span class="chip">4–7–8 Breathing</span>
+          <span class="chip">Butterfly Hug</span>
+        </div>
+      </div>
+
+      <div class="state" style="--tint: var(--ruminating)">
+        <div class="state-name">
+          <span class="state-blob" aria-hidden="true"></span>
+          <div><h3>I can&rsquo;t stop thinking</h3><p class="sub">Give the thoughts somewhere to go</p></div>
+        </div>
+        <div class="chips">
+          <span class="chip">Worry Dump <span class="free">free</span></span>
+          <span class="chip">Thought Record</span>
+          <span class="chip">Worry Appointment</span>
+          <span class="chip">Coherent Breathing</span>
+        </div>
+      </div>
+
+      <div class="state" style="--tint: var(--tense)">
+        <div class="state-name">
+          <span class="state-blob" aria-hidden="true"></span>
+          <div><h3>I feel tense</h3><p class="sub">Unwind, one part at a time</p></div>
+        </div>
+        <div class="chips">
+          <span class="chip">Tense &amp; Release</span>
+          <span class="chip">Body Scan</span>
+          <span class="chip">Alternate Nostril</span>
+        </div>
+      </div>
+
+      <div class="state" style="--tint: var(--angry)">
+        <div class="state-name">
+          <span class="state-blob" aria-hidden="true"></span>
+          <div><h3>I&rsquo;m angry</h3><p class="sub">Let the heat pass through</p></div>
+        </div>
+        <div class="chips">
+          <span class="chip">The STOP Practice <span class="free">free</span></span>
+          <span class="chip">Cold Reset</span>
+        </div>
+      </div>
+
+      <div class="state" style="--tint: var(--low)">
+        <div class="state-name">
+          <span class="state-blob" aria-hidden="true"></span>
+          <div><h3>I feel low</h3><p class="sub">Something small and kind</p></div>
+        </div>
+        <div class="chips">
+          <span class="chip">Worry Dump <span class="free">free</span></span>
+          <span class="chip">Three Good Things</span>
+          <span class="chip">Kind Wishes</span>
+          <span class="chip">Calm Canvas</span>
+        </div>
+      </div>
+
+      <div class="state" style="--tint: var(--sleepless)">
+        <div class="state-name">
+          <span class="state-blob" aria-hidden="true"></span>
+          <div><h3>I can&rsquo;t sleep</h3><p class="sub">Quiet the day down</p></div>
+        </div>
+        <div class="chips">
+          <span class="chip">Tomorrow List <span class="free">free</span></span>
+          <span class="chip">Cognitive Shuffle</span>
+          <span class="chip">Safe Place</span>
+        </div>
+      </div>
+    </div>
+    <p class="states-foot">Six techniques are free forever — one for every feeling. And from the Lock Screen widget, solid ground is one tap away.</p>
+  </section>
+
+  <!-- Screenshots -->
+  <section class="phones-section wrap reveal" aria-labelledby="phones-h">
+    <div class="section-head">
+      <h2 id="phones-h">Feels like a quiet room, not an app.</h2>
+      <p>Warm paper, a serif voice, soft light. Gentle haptics pace your exhale.
+        Nothing blinks, nothing counts down at you, nothing asks for a streak.</p>
+    </div>
+    <div class="phones">
+      <figure class="phone">
+        <div class="frame"><img src="assets/reground-home.jpg" width="720" height="1565" loading="lazy" alt="Reground home screen on a warm paper background: “What do you need right now?” above felt-state sections like I'm panicking and I can't stop thinking, each with soft tinted technique cards."></div>
+        <figcaption><b>One question</b>Pick how you feel, not a category.</figcaption>
+      </figure>
+      <figure class="phone">
+        <div class="frame"><img src="assets/reground-intro.jpg" width="720" height="1565" loading="lazy" alt="Box Breathing intro screen: a soft blue blob above the technique name, the rhythm In 4 · Hold 4 · Out 4 · Hold 4, a plain-language explanation, and a Strong evidence label."></div>
+        <figcaption><b>One tap</b>Why it works, in plain words. Then begin.</figcaption>
+      </figure>
+      <figure class="phone">
+        <div class="frame"><img src="assets/reground-breathing.jpg" width="720" height="1565" loading="lazy" alt="A breathing session in progress: a large soft blue orb reading “Breathe in, 3”, ringed by small drifting dots, on a calm pale background."></div>
+        <figcaption><b>One breath</b>The phone breathes with you.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Honesty pillars -->
+  <section class="wrap" aria-label="What makes Reground different">
+    <div class="pillar reveal">
+      <div>
+        <h2>Honest about the science.</h2>
+        <p class="body">A third of wellness apps cite evidence that doesn&rsquo;t exist. Reground does the
+          opposite: <strong>every technique carries a plain label</strong> — strong research
+          support, promising, or traditional practice. No overselling, no borrowed lab coats.</p>
+      </div>
+      <div class="pillar-aside evidence-stack" aria-hidden="false">
+        <div class="evidence" style="--tint: var(--tense)"><span class="t">Box Breathing</span><span class="tag">Strong evidence</span></div>
+        <div class="evidence" style="--tint: var(--panic)"><span class="t">5·4·3·2·1 Senses</span><span class="tag">Promising</span></div>
+        <div class="evidence" style="--tint: var(--sleepless)"><span class="t">Alternate Nostril</span><span class="tag">Traditional practice</span></div>
+      </div>
+    </div>
+
+    <div class="pillar reveal">
+      <div>
+        <h2>Private by design.</h2>
+        <p class="body">What you write at 3&nbsp;a.m. is nobody&rsquo;s business — not even ours.
+          There is no account to create and no server to send anything to. The App&nbsp;Store
+          privacy label reads <strong>“Data Not Collected”</strong>, and it&rsquo;s true in the code,
+          not just the marketing.</p>
+      </div>
+      <div class="pillar-aside">
+        <p class="privacy-statement">No account. No server. No analytics. Everything you write, draw, or practice
+          <span class="stays">stays on your phone.</span> Full stop.</p>
+      </div>
+    </div>
+
+    <div class="pillar reveal">
+      <div>
+        <h2>Pay once, if you like it.</h2>
+        <p class="body">Six techniques are free forever. One payment unlocks
+          <strong>every technique — including every one we add later.</strong>
+          Solid ground shouldn&rsquo;t auto-renew.</p>
+      </div>
+      <div class="pillar-aside">
+        <div class="price-card">
+          <p class="amount">$5.99 <small>once. Every technique, forever.</small></p>
+          <ul>
+            <li>All 22 techniques, forever</li>
+            <li>Every future technique — included</li>
+            <li>Purchase restores on any of your devices</li>
+          </ul>
+          <p class="vs">A meditation subscription runs about $70 a year. Reground costs about one coffee. Once.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="closing wrap reveal" id="get" aria-labelledby="closing-h">
+    <div class="mini-orb" aria-hidden="true"></div>
+    <h2 id="closing-h">Put it in your pocket before you need it.</h2>
+    <p>Like a first-aid kit, Reground earns its place on the days you don&rsquo;t open it.</p>
+    <div class="cta-row">
+      <span class="appstore">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z"/></svg>
+        <span class="lines"><span class="small">Coming soon on the</span><span class="big">App Store</span></span>
+      </span>
+    </div>
+  </section>
 </main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <span>© 2026 Reground · made quietly</span>
+      <nav aria-label="Footer">
+        <a href="privacy.html">Privacy policy</a>
+        <a href="mailto:mmcydesign@gmail.com">mmcydesign@gmail.com</a>
+      </nav>
+    </div>
+    <p class="disclaimer">Reground is a self-care toolkit, not medical care. If you&rsquo;re struggling,
+      a mental-health professional can help in ways an app can&rsquo;t.</p>
+  </div>
+</footer>
+
+<script>
+  document.documentElement.classList.add('js');
+
+  /* Optional preview override: ?theme=light|dark */
+  (function () {
+    var t = new URLSearchParams(location.search).get('theme');
+    if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+  })();
+
+  /* Orbiting dots — mirrors the app's pacer ornament */
+  (function () {
+    var ring = document.getElementById('dots');
+    var N = 26;
+    for (var i = 0; i < N; i++) {
+      var s = document.createElement('span');
+      var angle = (i / N) * Math.PI * 2;
+      /* deterministic pseudo-random wobble, like the app's seeded ornament */
+      var wobble = Math.sin(i * 12.9898) * 0.5;
+      var r = 46 + wobble * 3.2;
+      var size = 3 + ((i * 7) % 5);
+      s.style.width = s.style.height = size + 'px';
+      s.style.left = (50 + Math.cos(angle) * r) + '%';
+      s.style.top = (50 + Math.sin(angle) * r) + '%';
+      s.style.opacity = (0.25 + ((i * 13) % 10) / 28).toFixed(2);
+      ring.appendChild(s);
+    }
+  })();
+
+  /* Box-breathing pacer: In 4 · Hold 4 · Out 4 · Hold 4 */
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var scaleEl = document.getElementById('orbScale');
+    var label = document.getElementById('phaseLabel');
+    var count = document.getElementById('phaseCount');
+    var phases = [
+      { name: 'Breathe in',  seconds: 4, scale: 1.0 },
+      { name: 'Hold',        seconds: 4, scale: 1.0 },
+      { name: 'Breathe out', seconds: 4, scale: 0.82 },
+      { name: 'Hold',        seconds: 4, scale: 0.82 }
+    ];
+    var phase = 0, tick = 0;
+
+    function applyPhase() {
+      var p = phases[phase];
+      label.textContent = p.name;
+      count.textContent = p.seconds;
+      if (!reduce) scaleEl.style.transform = 'scale(' + p.scale + ')';
+    }
+
+    applyPhase();
+    setInterval(function () {
+      if (document.hidden) return;
+      tick++;
+      var p = phases[phase];
+      if (tick >= p.seconds) {
+        tick = 0;
+        phase = (phase + 1) % phases.length;
+        applyPhase();
+      } else {
+        count.textContent = p.seconds - tick;
+      }
+    }, 1000);
+  })();
+
+  /* Scroll reveals — enhancement only; content is visible without JS */
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!('IntersectionObserver' in window)) return;
+    var pending = Array.from(document.querySelectorAll('.reveal'));
+    function show(el) { el.classList.add('in'); io.unobserve(el); pending = pending.filter(function (p) { return p !== el; }); }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) show(e.target); });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    pending.forEach(function (el) { io.observe(el); });
+    /* Safety sweep: fast/smooth scrolls can slip past IO between its checks */
+    var sweep = setInterval(function () {
+      pending.slice().forEach(function (el) {
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.92) show(el);
+      });
+      if (!pending.length) clearInterval(sweep);
+    }, 700);
+  })();
+</script>
 </body>
 </html>
