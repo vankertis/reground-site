@@ -64,10 +64,16 @@ article h1 { font-size: clamp(1.9rem, 4.6vw, 2.7rem); line-height: 1.12; letter-
   font-size: 1.16rem; line-height: 1.6; color: var(--ink);
 }
 .meta {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px;
-  margin-top: 18px; padding-block: 14px; border-block: 1px solid var(--line);
-  font-size: .88rem; color: var(--muted);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+  margin-top: 20px; font-size: .88rem; color: var(--muted);
 }
+.meta .dur {
+  font-size: .82rem; padding: 5px 12px; border-radius: 999px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+}
+.meta .reviewed { margin-left: auto; font-size: .8rem; }
+@media (max-width: 540px) { .meta .reviewed { margin-left: 0; width: 100%; } }
 .chip {
   font-weight: 600; font-size: .82rem; padding: 5px 12px; border-radius: 999px;
   border: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 70%, transparent);
