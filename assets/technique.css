@@ -156,10 +156,12 @@ footer.site .disclaimer { margin-top: 16px; font-size: .85rem; color: var(--mute
 .compare .count { color: var(--muted); font-size: .78rem; }
 .compare .best { font-size: .88rem; }
 .compare .us td { background: color-mix(in srgb, var(--accent, var(--panic)) 9%, transparent); }
-.us-badge { display: inline-block; margin-left: 8px; vertical-align: 2px;
-  font-family: var(--sans); font-size: .66rem; font-weight: 700; letter-spacing: .04em;
-  color: var(--accent, var(--panic)); border: 1px solid color-mix(in srgb, var(--accent, var(--panic)) 50%, transparent);
-  border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
+/* Our row: identified by the pebble mark, not by praise words (2026-07-16).
+   Tint + mark say "this one is us"; the table data does the arguing. */
+.compare .us .nm::before { content: ""; display: inline-block; width: .62em; height: .62em;
+  margin-right: 8px; vertical-align: baseline; border-radius: 46% 54% 52% 48% / 52% 46% 54% 48%;
+  background: var(--accent, var(--panic)); }
+.compare .us td { border-bottom-color: color-mix(in srgb, var(--accent, var(--panic)) 35%, transparent); }
 
 .our-case { margin-top: clamp(36px, 5vh, 52px); padding: clamp(20px, 3.5vw, 30px);
   border: 1px solid color-mix(in srgb, var(--accent, var(--panic)) 40%, transparent);
