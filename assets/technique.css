@@ -137,3 +137,36 @@ footer.site { padding-block: 34px 48px; border-top: 1px solid var(--line); margi
 footer.site .foot { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; font-size: .9rem; color: var(--muted); }
 footer.site nav { display: flex; gap: 18px; }
 footer.site .disclaimer { margin-top: 16px; font-size: .85rem; color: var(--muted); max-width: 62ch; }
+
+/* ---------- Comparison pages ---------- */
+.compare-wrap { margin-top: 18px; overflow-x: auto; }
+.compare { width: 100%; border-collapse: collapse; font-size: .95rem; min-width: 560px; }
+.compare th, .compare td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.compare th { font-family: var(--sans); font-size: .8rem; font-weight: 650; color: var(--muted);
+              letter-spacing: .02em; }
+.compare td:first-child { font-weight: 600; white-space: nowrap; }
+.compare .us td { background: color-mix(in srgb, var(--accent, var(--panic)) 7%, transparent); }
+.compare .price { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.verdict-card { margin-top: 16px; padding: clamp(18px, 3vw, 24px);
+  background: color-mix(in srgb, var(--surface) 85%, transparent);
+  border: 1px solid var(--line); border-radius: 18px; }
+.verdict-card h3 { font-size: 1.15rem; }
+.verdict-card .who { margin-top: 6px; color: var(--muted); font-size: .92rem; }
+.verdict-card p { margin-top: 10px; }
+.verdict-card .meta-line { margin-top: 10px; font-size: .85rem; color: var(--muted); }
+
+.cost-math { margin-top: 18px; padding: clamp(18px, 3vw, 26px);
+  border: 1px solid color-mix(in srgb, var(--accent, var(--panic)) 35%, transparent);
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--accent, var(--panic)) 6%, transparent); }
+.cost-math .big { font-family: var(--serif); font-size: clamp(1.3rem, 3vw, 1.7rem); }
+.cost-math p { margin-top: 8px; }
+
+.checked { font-size: .8rem; color: var(--muted); margin-top: 10px; }
+
+/* Keyboard focus parity with hover (audit 2026-07-16) */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent, var(--panic)); outline-offset: 3px; border-radius: 6px;
+}
+.tcard:focus-visible, .appstore:focus-visible { outline-offset: 2px; }
