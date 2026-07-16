@@ -124,7 +124,8 @@ article p + p { margin-top: 14px; }
   box-shadow: var(--shadow);
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px;
 }
-.cta p { max-width: 40ch; }
+.cta > div { flex: 1 1 300px; }
+.cta p { max-width: 52ch; }
 .cta .note { font-size: .9rem; color: var(--muted); margin-top: 6px; }
 .appstore {
   display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
