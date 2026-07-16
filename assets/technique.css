@@ -140,13 +140,17 @@ footer.site .disclaimer { margin-top: 16px; font-size: .85rem; color: var(--mute
 
 /* ---------- Comparison pages ---------- */
 .compare-wrap { margin-top: 18px; overflow-x: auto; }
-.compare { width: 100%; border-collapse: collapse; font-size: .95rem; min-width: 560px; }
-.compare th, .compare td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
-.compare th { font-family: var(--sans); font-size: .8rem; font-weight: 650; color: var(--muted);
-              letter-spacing: .02em; }
-.compare td:first-child { font-weight: 600; white-space: nowrap; }
-.compare .us td { background: color-mix(in srgb, var(--accent, var(--panic)) 7%, transparent); }
-.compare .price { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.compare { width: 100%; border-collapse: collapse; font-size: .88rem; line-height: 1.45; min-width: 620px; }
+.compare th, .compare td { text-align: left; padding: 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.compare th { font-family: var(--sans); font-size: .72rem; font-weight: 650; color: var(--muted);
+              letter-spacing: .06em; text-transform: uppercase; padding-block: 8px; }
+.compare tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--surface) 45%, transparent); }
+.compare td:first-child { font-weight: 600; white-space: nowrap; font-size: .92rem; }
+.compare .us td { background: color-mix(in srgb, var(--accent, var(--panic)) 9%, transparent) !important; }
+.compare .price { font-variant-numeric: tabular-nums; min-width: 130px; }
+.compare .price .tier { display: block; white-space: nowrap; }
+.compare .rating { white-space: nowrap; }
+.compare .rating .count { color: var(--muted); font-size: .8rem; }
 
 .verdict-card { margin-top: 16px; padding: clamp(18px, 3vw, 24px);
   background: color-mix(in srgb, var(--surface) 85%, transparent);
