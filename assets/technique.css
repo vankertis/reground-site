@@ -118,15 +118,20 @@ article p + p { margin-top: 14px; }
 .faq h3 { font-size: 1.12rem; margin-top: 22px; }
 .faq h3 + p { margin-top: 8px; color: var(--ink); }
 
+/* CTA layout E (Max's pick, 2026-07-16): serif lead + muted body full-width,
+   then a hairline footer row — note left, App Store badge right. */
 .cta {
   margin-top: clamp(36px, 5vh, 52px); padding: clamp(20px, 3.5vw, 30px);
   background: var(--surface); border: 1px solid var(--line); border-radius: 22px;
   box-shadow: var(--shadow);
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px;
 }
-.cta > div { flex: 1 1 300px; }
-.cta p { max-width: 52ch; }
-.cta .note { font-size: .9rem; color: var(--muted); margin-top: 6px; }
+.cta .lead { font-family: var(--serif); font-size: 1.3rem; line-height: 1.35; text-wrap: balance; }
+.cta .body { margin-top: 10px; color: var(--muted); }
+.cta .foot {
+  margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 22px;
+}
+.cta .note { font-size: .9rem; color: var(--muted); max-width: 42ch; }
 .appstore {
   display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
   background: var(--badge-bg); color: var(--badge-ink);
