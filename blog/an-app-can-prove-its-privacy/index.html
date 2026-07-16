@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>An app can prove its privacy. Here's how to check ours. — Reground</title>
+<meta name="description" content="92% of depression apps studied sent data to a third party. App Store privacy labels are wrong most of the time. Here's the evidence, and a five-minute way to check any app yourself.">
+<link rel="canonical" href="https://reground.pro/blog/an-app-can-prove-its-privacy/">
+<meta property="og:title" content="An app can prove its privacy. Here's how to check ours.">
+<meta property="og:description" content="Mental-health apps have earned distrust with data. Here's the record, why App Store labels can't be taken on faith, and how to verify any app — including ours — in five minutes.">
+<meta property="og:image" content="https://reground.pro/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://reground.pro/assets/og.png">
+<meta name="theme-color" content="#f9f6f1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131417" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%235d84aa' d='M32 6c11 0 22 8.5 23.5 20.5C57 38.5 50 52 37.5 55.5 25 59 11.5 52 8 39.5 4.5 27 11 14 21.5 9.2 25 7.1 28.5 6 32 6z'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/assets/technique.css">
+<style>
+  :root { --accent: var(--sleepless); }
+  .essay p { margin-top: 16px; }
+  .essay h2 { margin-top: clamp(40px, 6vh, 56px); }
+  .pull { font-family: var(--serif); font-size: 1.25rem; line-height: 1.5;
+          margin-top: 24px; padding-left: 18px;
+          border-left: none; padding-block: 4px; }
+  .pull::before { content: ""; display: block; width: 56px; height: 3px; border-radius: 2px;
+                  background: var(--accent); margin-bottom: 14px; }
+  .sources { margin-top: clamp(40px, 6vh, 56px); padding-top: 20px; border-top: 1px solid var(--line); }
+  .sources h2 { margin-top: 0; font-size: 1.1rem; }
+  .sources ol { margin: 12px 0 0 20px; font-size: .88rem; color: var(--muted); }
+  .sources li { margin-top: 8px; }
+  .sources a { text-decoration-color: color-mix(in srgb, var(--muted) 50%, transparent); }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "An app can prove its privacy. Here's how to check ours.",
+  "description": "Mental-health apps have earned distrust with data: 92% of studied apps shared data with third parties, and App Store privacy labels are wrong most of the time. An evidence-first essay, with a five-minute way to verify any app yourself.",
+  "author": { "@type": "Organization", "name": "Reground", "url": "https://reground.pro" },
+  "publisher": { "@type": "Organization", "name": "Reground", "url": "https://reground.pro" },
+  "datePublished": "2026-07-16",
+  "dateModified": "2026-07-16",
+  "mainEntityOfPage": "https://reground.pro/blog/an-app-can-prove-its-privacy/"
+}
+</script>
+</head>
+<body>
+<div class="atmosphere" aria-hidden="true"></div>
+
+<header>
+  <div class="wrap">
+    <div class="bar">
+      <a class="wordmark" href="/" aria-label="Reground home">
+        <span class="re">Re<svg viewBox="0 0 30 8" aria-hidden="true"><path d="M1 7 Q 15 -4 29 7"/></svg></span>ground
+      </a>
+      <a class="crumb" href="/blog/">Blog</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <article class="wrap essay">
+    <div class="meta">
+      <span class="chip strong">Essay</span>
+      <span class="dur">8 min read</span>
+    </div>
+
+    <h1>An app can prove its privacy. Here's how to check ours.</h1>
+
+    <p class="answer">Mental-health apps have earned distrust with data, not paranoia. Privacy
+    promises are cheap, and even official App Store labels are often wrong. Verification beats
+    trust. This essay shows the receipts on the industry, then shows you how to verify any app —
+    including ours — in about five minutes.</p>
+
+    <h2>The record</h2>
+    <p>Distrust of mental-health apps is not a vibe. It is a documented pattern, repeated across
+    every independent audit anyone has run.</p>
+    <p>The category deserves more scrutiny than a shopping app, not less. A journal entry or a
+    mood log sits closer to a medical record than to a shopping preference. It is easy to tie
+    back to the person who wrote it, and that is exactly the data these audits went looking
+    for.</p>
+    <p>In 2019, researchers tested 36 depression and smoking-cessation apps and watched what data
+    actually left the phone. Thirty-three of them — 92% — transmitted user data to a third
+    party.<sup>[1]</sup> Of the ones sharing with Google or Facebook specifically, only 59%
+    disclosed that sharing anywhere in their privacy policy.<sup>[1]</sup> The same audit found
+    that only 25 of the 36 apps — 69% — published a privacy policy at all.<sup>[1]</sup></p>
+    <p class="pull">Ninety-two percent of the depression and smoking-cessation apps studied sent
+    data to a third party. Fewer than six in ten of those bothered to say so.<sup>[1]</sup></p>
+    <p>Mozilla ran a comparable test on the wellness category in 2022, checking 32 popular
+    mental-health apps against its own privacy and security standards. Twenty-eight of them —
+    88% — earned Mozilla's *Privacy Not Included warning label.<sup>[2]</sup> Twenty-five of
+    the 32 — 78% — failed Mozilla's own Minimum Security Standards, meaning basics like
+    encrypting data in transit weren't guaranteed.<sup>[2]</sup> The retest a year later found
+    little had improved: of 27 apps reviewed both times, 8 got better and 17 got worse or stayed
+    the same.<sup>[3]</sup></p>
+    <p>Two of the largest platforms in the category have already paid for exactly this kind of
+    behavior. BetterHelp paid the Federal Trade Commission $7.8 million in 2023 for sharing
+    users' health questionnaires, and email and IP addresses, with Facebook, Snapchat, Criteo,
+    and Pinterest for advertising.<sup>[4]</sup> Cerebral paid $7.1 million in 2024, after
+    tracking pixels sent sensitive data on more than 3.1 million users to Snapchat, LinkedIn,
+    and TikTok.<sup>[5]</sup></p>
+    <p>None of this is abstract to the people the apps are for. In one survey of patients
+    considering a mental-health app, 59.1% named data-privacy concerns as a reason they
+    hesitated.<sup>[6]</sup> The distrust is earned, and it is costing the category the people
+    it exists to help.</p>
+
+    <h2>Even the labels lie</h2>
+    <p>Apple's App Store privacy label was supposed to fix this. It hasn't.</p>
+    <p>A 2024 audit of app privacy labels found that 97% of apps marked "Data Not Collected" had
+    a privacy policy that said otherwise.<sup>[7]</sup> The same audit checked roughly 475,000
+    apps and found 228,000 of them — 48% — had a privacy policy suggesting more data collection
+    than the label disclosed.<sup>[7]</sup> A separate study of iOS apps found 67% of privacy
+    labels were inconsistent with what the app actually did.<sup>[8]</sup> The label you check
+    before downloading is, most of the time, decorative.</p>
+    <p>That matters because the label is the only privacy information most people ever see. It
+    sits right on the download screen, before the price, before the reviews, and it is designed
+    to be read in three seconds and trusted. The research above says that trust is misplaced far
+    more often than not.</p>
+    <p>Our own App Store label also says "Data Not Collected." Per that same research, that is
+    exactly the kind of claim you should not take on faith — ours included. So don't. Check it
+    yourself. Here's how.</p>
+
+    <h2>What proof looks like</h2>
+    <p>A privacy policy is a promise. An architecture is a constraint, and constraints are
+    provable in a way promises aren't.</p>
+    <p>Reground has no account, so there is no identity attached to what you write. It has no
+    server of ours, so there is nothing of ours to breach. It carries no third-party SDKs, so no
+    analytics company's code is running on your phone, phoning anything anywhere. Your journal,
+    your mood log, your settings — all of it stays in on-device storage, full stop.</p>
+    <p>Each of those is a thing removed, not a feature added. No account means no sign-up screen
+    and no password to leak. No server means no database anywhere with your name next to your
+    entries. No SDKs means no advertising or analytics vendor sitting quietly inside the app,
+    collecting whatever it's built to collect.</p>
+    <p>None of that is a claim about our intentions. A privacy policy describes intentions, and
+    intentions can change, or lie, or simply be wrong, as the studies above show. An architecture
+    describes what the software can physically do. Ours can't leak what it never touches.</p>
+
+    <h2>Check us — it takes five minutes</h2>
+    <p>You don't have to take the paragraph above on faith. You can test it yourself, on your
+    own phone, in about five minutes, with no special tools beyond your Settings app.</p>
+    <p>Four checks follow, from easiest to most technical. Do the first one even if you skip the
+    rest — it alone rules out an entire category of hidden behavior.</p>
+    <p>Put your phone in airplane mode, then open the app. Write a journal entry, log a mood,
+    run a breathing technique. Everything keeps working, including the journal, because there is
+    no server to reach. A cloud-backed app can't fake that — it needs the network, and airplane
+    mode removes it.</p>
+    <p>For a second look, open Settings → Privacy &amp; Security → App Privacy Report and check
+    Reground's network activity. The only domains you'll see are Apple's own App Store
+    endpoints, logged when you make a purchase — nothing else.</p>
+    <p>If you know how to run a network proxy — mitmproxy or Charles both work — route the
+    app's traffic through it. The only calls you'll capture are StoreKit's, Apple's own purchase
+    framework. There is nothing else to see, because there is nothing else running.</p>
+    <p>And read the privacy policy itself. It's one page, because there's nothing to enumerate —
+    no data categories, no third-party list, no retention schedule, because none of those things
+    exist here.</p>
+    <p>None of these checks require trusting our word for anything. Airplane mode is a fact about
+    physics, not a promise. A network log either shows a call or it doesn't. A one-page policy is
+    either short because there's nothing to say, or it's hiding something behind vague language —
+    read it and judge for yourself.</p>
+    <p>Run the same four checks on any wellness app already on your phone, including ones you
+    pay for. Most will fail the first one before you finish reading this sentence.</p>
+
+    <h2>The honest limits</h2>
+    <p>None of this is unlimited proof, and pretending otherwise would undercut everything
+    above.</p>
+    <p>Apple sees that you bought the app. StoreKit is Apple's payment rail, not ours, and that
+    transaction is genuinely outside our reach. If you back up your phone to iCloud, that backup
+    includes our local data too — governed by your iCloud settings, not by any promise of ours.
+    And "no analytics" cuts both ways: we don't know how many people use Reground, which
+    techniques help, or where anyone gets stuck. That is a real cost, and we accept it, because
+    the alternative is knowing by watching you.</p>
+    <p>Saying this plainly is what makes the rest of this essay worth anything. A company that
+    only tells you what makes it look good is doing marketing. This is an attempt at something
+    else.</p>
+    <p>It also shapes how we build. Without usage data, we can't quietly A/B-test a paywall or
+    watch a drop-off funnel and optimize against it. Decisions get made from what people tell us
+    directly, in reviews and emails, which is slower and noisier than a dashboard — and the
+    trade we chose on purpose.</p>
+    <p>The point of this essay was never only Reground. Run any wellness app on your phone
+    through the same four checks: airplane mode, the App Privacy Report, a proxy if you have
+    one, and an honest read of the policy. An app that survives all four has earned something a
+    label can't fake.</p>
+    <p>A disclosure, kept to the end on purpose: we make <a href="/">Reground</a>. Treat
+    everything above as testimony, not neutral reporting — which is exactly why this essay
+    spent its length showing you how to check it yourself, instead of asking you to believe it.
+    Our App Store label happens to say "Data Not Collected" honestly. Read the
+    <a href="/privacy">privacy policy</a> yourself, then decide.</p>
+
+    <div class="sources">
+      <h2>Sources</h2>
+      <ol>
+        <li><a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2730782" rel="noopener">Data sharing and privacy practices of smartphone apps for depression and smoking cessation, JAMA Network Open, 2019.</a></li>
+        <li><a href="https://www.mozillafoundation.org/en/blog/shady-mental-health-apps-inch-toward-privacy-and-security-improvements-but-many-still-siphon-personal-data/" rel="noopener">*Privacy Not Included: mental health apps review, Mozilla Foundation, 2022.</a></li>
+        <li><a href="https://www.mozillafoundation.org/en/privacynotincluded/articles/are-mental-health-apps-better-or-worse-at-privacy-in-2023/" rel="noopener">Are mental health apps better or worse at privacy in 2023? Mozilla Foundation, 2023.</a></li>
+        <li><a href="https://www.ftc.gov/news-events/news/press-releases/2023/07/ftc-gives-final-approval-order-banning-betterhelp-sharing-sensitive-health-data-advertising" rel="noopener">FTC final order banning BetterHelp from sharing sensitive health data for advertising, Federal Trade Commission, 2023.</a></li>
+        <li><a href="https://www.ftc.gov/news-events/news/press-releases/2024/04/proposed-ftc-order-will-prohibit-telehealth-firm-cerebral-using-or-disclosing-sensitive-data" rel="noopener">FTC proposed order prohibiting Cerebral from using or disclosing sensitive data, Federal Trade Commission, 2024.</a></li>
+        <li><a href="https://mental.jmir.org/2019/1/e11334/" rel="noopener">Data-privacy concerns as a barrier to mental health app use, patient survey, JMIR Mental Health, 2019.</a></li>
+        <li><a href="https://arxiv.org/abs/2306.17063" rel="noopener">Honesty is the best policy: comparing App Store privacy labels against privacy policies, Proceedings on Privacy Enhancing Technologies Symposium, 2024.</a></li>
+        <li><a href="https://crysp.petsymposium.org/popets/2024/popets-2024-0111.pdf" rel="noopener">Audit of iOS privacy label accuracy across 5,102 apps, Proceedings on Privacy Enhancing Technologies Symposium, 2023.</a></li>
+      </ol>
+      <p class="checked">iOS verification steps described above use Settings → Privacy &amp; Security → App Privacy Report, available on iOS 15.2 and later.</p>
+    </div>
+
+    <p class="reviewed">Sources reviewed &middot; July 2026</p>
+  </article>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot">
+      <span>© 2026 Reground · made quietly</span>
+      <nav aria-label="Footer">
+        <a href="/blog/">Blog</a>
+        <a href="/techniques/">Technique guides</a>
+        <a href="/privacy">Privacy policy</a>
+      </nav>
+    </div>
+    <p class="disclaimer">Reground is a self-care toolkit, not medical care. If you're
+    struggling, a mental-health professional can help in ways an app can't. If you're
+    in crisis, contact your local emergency number.</p>
+  </div>
+</footer>
+</body>
+</html>
