@@ -27,6 +27,16 @@
   .tcard .row .min { font-size: .8rem; color: var(--muted); }
   .more { margin-top: clamp(28px, 4vh, 40px); color: var(--muted); }
   .section-h { font-size: 1.3rem; margin-top: clamp(36px, 5vh, 48px); }
+
+  .feed { margin-top: clamp(24px, 4vh, 40px); display: grid; }
+  .post { display: block; text-decoration: none; padding: 22px 4px; border-bottom: 1px solid var(--line); }
+  .post:last-child { border-bottom: none; }
+  .post:hover h2 { text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--ink) 30%, transparent); text-underline-offset: 4px; }
+  .post .pmeta { display: flex; gap: 12px; align-items: center; font-size: .78rem; color: var(--muted); }
+  .post .ptag { font-weight: 650; letter-spacing: .05em; text-transform: uppercase; font-size: .68rem;
+                color: var(--panic); }
+  .post h2 { font-size: 1.28rem; margin-top: 6px; }
+  .post p { color: var(--muted); font-size: .95rem; margin-top: 6px; max-width: 60ch; }
 </style>
 </head>
 <body>
@@ -46,25 +56,41 @@
 <main>
   <article class="wrap">
     <h1>Blog</h1>
-    <p class="answer">Honest comparisons with verified prices, and occasional notes on
-    calm tech, pricing, and privacy. We make Reground — every comparison discloses it,
-    includes competitors' real strengths, and links primary sources.</p>
+    <p class="answer">Comparisons with verified prices, technique notes, and essays on
+    calm tech, pricing, and privacy. We make Reground — every comparison says so,
+    keeps competitors' real strengths, and links primary sources.</p>
 
-    <h2 class="section-h">Honest comparisons</h2>
-    <div class="grid">
-      <a class="tcard" href="/best-breathing-apps-no-subscription/"><h2>Best breathing apps without a subscription</h2><p>Free and pay-once only — verified prices, 10 apps.</p></a>
-      <a class="tcard" href="/calm-alternatives-no-subscription/"><h2>Apps like Calm, without the subscription</h2><p>Including the free nonprofits.</p></a>
-      <a class="tcard" href="/panic-apps-pricing/"><h2>Panic apps: what five years costs</h2><p>One-time vs subscription, plain math.</p></a>
-      <a class="tcard" href="/grounding-apps/"><h2>Grounding apps, compared</h2><p>A small category, honestly sized.</p></a>
+    <div class="feed">
+      <a class="post" href="/panic-apps-pricing/">
+        <div class="pmeta"><span class="ptag">Comparison</span><span>July 2026</span></div>
+        <h2>Panic attack apps: one-time vs subscription — the five-year math</h2>
+        <p>Rootd, Dare, PanicShield and Reground: what each is genuinely best at,
+        and what five years of each actually costs. Plain arithmetic, verified prices.</p>
+      </a>
+      <a class="post" href="/best-breathing-apps-no-subscription/">
+        <div class="pmeta"><span class="ptag">Comparison</span><span>July 2026</span></div>
+        <h2>Best breathing apps without a subscription</h2>
+        <p>Ten apps you can own outright — free or one payment. Including the ones
+        that aren't ours, and the one already built into your Apple Watch.</p>
+      </a>
+      <a class="post" href="/calm-alternatives-no-subscription/">
+        <div class="pmeta"><span class="ptag">Comparison</span><span>July 2026</span></div>
+        <h2>Apps like Calm — without the subscription</h2>
+        <p>The free nonprofits nobody advertises, the pay-once options, and an honest
+        note on what nothing quite replaces.</p>
+      </a>
+      <a class="post" href="/grounding-apps/">
+        <div class="pmeta"><span class="ptag">Comparison</span><span>July 2026</span></div>
+        <h2>Grounding technique apps, compared honestly</h2>
+        <p>A small category, honestly sized — plus the free guide that needs no app at all.</p>
+      </a>
+      <a class="post" href="/techniques/">
+        <div class="pmeta"><span class="ptag">Guides</span><span>ongoing</span></div>
+        <h2>Technique guides: the library</h2>
+        <p>Step-by-step guides with honest evidence labels — box breathing, the
+        physiological sigh, 5-4-3-2-1 grounding and more.</p>
+      </a>
     </div>
-
-    <h2 class="section-h">Technique guides</h2>
-    <p class="more" style="margin-top:10px;">Step-by-step guides with evidence labels live in
-    <a href="/techniques/">their own section</a> — six free techniques and counting.</p>
-
-    <h2 class="section-h">Essays</h2>
-    <p class="more" style="margin-top:10px;">Coming with launch: why panic relief shouldn't
-    cost $70 a year, and how an app can prove its privacy instead of promising it.</p>
   </article>
 </main>
 
