@@ -138,19 +138,34 @@ footer.site .foot { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-cont
 footer.site nav { display: flex; gap: 18px; }
 footer.site .disclaimer { margin-top: 16px; font-size: .85rem; color: var(--muted); max-width: 62ch; }
 
-/* ---------- Comparison pages ---------- */
+/* ---------- Comparison pages (B2 style, grouped, 2026-07-16) ---------- */
 .compare-wrap { margin-top: 18px; overflow-x: auto; }
-.compare { width: 100%; border-collapse: collapse; font-size: .88rem; line-height: 1.45; min-width: 620px; }
-.compare th, .compare td { text-align: left; padding: 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
-.compare th { font-family: var(--sans); font-size: .72rem; font-weight: 650; color: var(--muted);
-              letter-spacing: .06em; text-transform: uppercase; padding-block: 8px; }
-.compare tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--surface) 45%, transparent); }
-.compare td:first-child { font-weight: 600; white-space: nowrap; font-size: .92rem; }
-.compare .us td { background: color-mix(in srgb, var(--accent, var(--panic)) 9%, transparent) !important; }
-.compare .price { font-variant-numeric: tabular-nums; min-width: 130px; }
-.compare .price .tier { display: block; white-space: nowrap; }
-.compare .rating { white-space: nowrap; }
-.compare .rating .count { color: var(--muted); font-size: .8rem; }
+.compare { width: 100%; border-collapse: collapse; min-width: 620px; font-size: .9rem; line-height: 1.5; }
+.compare th, .compare td { text-align: left; padding: 14px 12px; vertical-align: top; }
+.compare thead th { font-family: var(--sans); font-size: .7rem; font-weight: 650; color: var(--muted);
+  letter-spacing: .07em; text-transform: uppercase; padding-block: 8px;
+  border-bottom: 2px solid var(--ink); }
+.compare thead th.num { text-align: right; }
+.compare tbody td { border-bottom: 1px solid var(--line); }
+.compare .group td { border-bottom: 1px solid var(--line); padding-block: 20px 6px;
+  font-family: var(--serif); font-size: 1rem; color: var(--ink); }
+.compare .nm { font-family: var(--serif); font-size: 1.02rem; white-space: nowrap; }
+.compare .pr { font-family: var(--serif); font-size: .98rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.compare .pr .sub { display: block; font-family: var(--sans); font-size: .76rem; color: var(--muted); margin-top: 2px; white-space: normal; }
+.compare td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.compare .count { color: var(--muted); font-size: .78rem; }
+.compare .best { font-size: .88rem; }
+.compare .us td { background: color-mix(in srgb, var(--accent, var(--panic)) 9%, transparent); }
+.us-badge { display: inline-block; margin-left: 8px; vertical-align: 2px;
+  font-family: var(--sans); font-size: .66rem; font-weight: 700; letter-spacing: .04em;
+  color: var(--accent, var(--panic)); border: 1px solid color-mix(in srgb, var(--accent, var(--panic)) 50%, transparent);
+  border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
+
+.our-case { margin-top: clamp(36px, 5vh, 52px); padding: clamp(20px, 3.5vw, 30px);
+  border: 1px solid color-mix(in srgb, var(--accent, var(--panic)) 40%, transparent);
+  border-radius: 22px; background: color-mix(in srgb, var(--accent, var(--panic)) 6%, transparent); }
+.our-case h2 { margin-top: 0 !important; }
+.our-case p { margin-top: 12px; }
 
 .verdict-card { margin-top: 16px; padding: clamp(18px, 3vw, 24px);
   background: color-mix(in srgb, var(--surface) 85%, transparent);
