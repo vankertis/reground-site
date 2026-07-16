@@ -60,8 +60,10 @@
       radial-gradient(44% 34% at 6% 46%, color-mix(in srgb, var(--tense) 8%, transparent), transparent 70%);
   }
 
-  .wrap { max-width: 720px; margin: 0 auto; padding-inline: clamp(20px, 4vw, 48px); }
+  /* Same 1120px frame as the homepage (2026-07-16); prose keeps a centered measure. */
+  .wrap { max-width: 1120px; margin: 0 auto; padding-inline: clamp(20px, 4vw, 48px); }
   .wrap-wide { max-width: 1120px; }
+  main.wrap > * { max-width: 720px; margin-inline: auto; }
 
   header.site { padding-block: clamp(20px, 3.5vh, 36px); }
   .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
