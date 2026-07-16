@@ -45,13 +45,7 @@ a { color: inherit; }
     radial-gradient(44% 34% at 6% 78%, color-mix(in srgb, var(--accent, var(--panic)) 7%, transparent), transparent 70%);
 }
 
-/* Same 1120px frame as the homepage (2026-07-16): header, footer and wide
-   components span the full site width. Prose keeps a ~75ch measure but shares
-   ONE left edge with everything else — no centered column inside the frame. */
-.wrap { max-width: 1120px; margin: 0 auto; padding-inline: clamp(20px, 4vw, 40px); }
-article > * { max-width: 720px; }
-article > .compare-wrap, article > .cta, article > .our-case,
-article > .grid, article > .feed { max-width: none; }
+.wrap { max-width: 720px; margin: 0 auto; padding-inline: clamp(20px, 4vw, 40px); }
 
 header { padding-block: clamp(20px, 3.5vh, 36px); }
 .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
