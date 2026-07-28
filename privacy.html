@@ -85,16 +85,6 @@
   h1 { font-size: clamp(2.1rem, 4.5vw, 3rem); line-height: 1.1; letter-spacing: -.012em; }
   .meta { color: var(--muted); font-size: .95rem; margin-top: 10px; }
 
-  /* Apple's "App Support" link on the store page lands here, so the way to
-     reach a human sits above the policy itself. */
-  .support {
-    margin-top: clamp(24px, 3.5vh, 32px);
-    border: 1px solid var(--line); border-radius: 16px;
-    padding: 16px clamp(16px, 2.5vw, 22px);
-    background: color-mix(in srgb, var(--surface) 65%, transparent);
-  }
-  .support p { font-size: 1rem; }
-
   .promise {
     background: var(--surface); border: 1px solid var(--line);
     border-radius: 20px; padding: clamp(20px, 3vw, 28px);
@@ -158,14 +148,8 @@
 
 <main class="wrap">
   <h1>Privacy policy</h1>
-  <p class="meta">Effective 8 July 2026 · applies to the Reground iOS app</p>
-
-  <div class="support" id="support">
-    <p><strong>Need help with the app?</strong> Write to
-    <a href="mailto:mmcydesign@gmail.com">mmcydesign@gmail.com</a> and it reaches the person who
-    built Reground. Purchases, receipts, and refunds are handled by Apple through your
-    Apple&nbsp;ID; anything else, ask us.</p>
-  </div>
+  <p class="meta">Effective 8 July 2026 · applies to the Reground iOS app ·
+  <a href="#support">need help with the app?</a></p>
 
   <div class="promise">
     <p><strong>The short version:</strong> Reground collects no data about you. There is no account,
@@ -207,8 +191,11 @@
   sync), this policy will be updated first, the change will be opt-in, and the app will say
   so plainly. The current promise stands: by default, nothing leaves your phone.</p>
 
-  <h2 style="--tint: var(--panic)">Contact</h2>
-  <p>Questions? Write to <a href="mailto:mmcydesign@gmail.com">mmcydesign@gmail.com</a>.</p>
+  <h2 id="support" style="--tint: var(--panic)">Support and contact</h2>
+  <p>Questions, bugs, or anything about this policy? Write to
+  <a href="mailto:mmcydesign@gmail.com">mmcydesign@gmail.com</a> and it reaches the person who
+  built Reground. Purchases, receipts, and refunds are handled by Apple through your
+  Apple&nbsp;ID; anything else, ask us.</p>
 
   <p class="colophon">Reground is developed and published by Maksym Chervynskyi.</p>
 </main>
