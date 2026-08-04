@@ -354,9 +354,15 @@
   }
   @keyframes minibreathe { 0%,100% { transform: scale(.86); } 50% { transform: scale(1.08); } }
   @media (prefers-reduced-motion: reduce) { .closing .mini-orb { animation: none; } }
-  .closing h2 { font-size: clamp(2rem, 4.4vw, 3.3rem); letter-spacing: -.012em; }
+  .closing h2 {
+    max-width: 24ch; margin-inline: auto;
+    font-size: clamp(2rem, 4vw, 3.15rem); line-height: 1.08; letter-spacing: -.012em;
+  }
   .closing p { margin: 16px auto 0; color: var(--muted); max-width: 44ch; }
-  .closing .cta-row { justify-content: center; }
+  .closing .cta-row {
+    justify-content: center; flex-direction: column; gap: 12px;
+  }
+  .closing .cta-row .price-note { margin: 0; max-width: none; }
 
   /* Footer */
   footer { border-top: 1px solid var(--line); padding-block: 36px 48px; }
