@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Reground, Privacy Policy</title>
+<link rel="canonical" href="https://reground.pro/privacy">
+<link rel="alternate" hreflang="en" href="https://reground.pro/privacy">
+<link rel="alternate" hreflang="uk" href="https://reground.pro/ua/privacy">
+<link rel="alternate" hreflang="x-default" href="https://reground.pro/privacy">
 <meta name="description" content="Reground collects no data. No account, no server, no analytics, everything you write, draw, or practice stays on your device.">
 <meta property="og:image" content="https://reground.pro/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -79,6 +83,10 @@
     transition: border-color .2s ease;
   }
   .bar-back:hover { border-color: color-mix(in srgb, var(--ink) 30%, transparent); }
+  .crumbs { display: flex; align-items: center; gap: 14px; }
+  .crumb.lang { font-size: .78rem; letter-spacing: .08em; padding: 3px 9px; color: var(--muted); text-decoration: none;
+    border: 1px solid color-mix(in srgb, var(--muted) 40%, transparent); border-radius: 999px; }
+  .crumb.lang:hover { color: var(--ink); border-color: color-mix(in srgb, var(--ink) 35%, transparent); }
 
   main { padding-block: clamp(36px, 7vh, 72px) clamp(72px, 10vh, 120px); }
 
@@ -140,7 +148,7 @@
 <header class="site">
   <div class="wrap wrap-wide bar">
     <a class="wordmark" href="index.html"><span class="re">Re<svg viewBox="0 0 40 8" preserveAspectRatio="none" aria-hidden="true"><path d="M1.5 6.2 Q20 1.2 38.5 6.2"/></svg></span>ground</a>
-    <a class="bar-back" href="index.html">About the app</a>
+    <nav class="crumbs"><a class="bar-back" href="index.html">About the app</a><a class="crumb lang" href="/ua/privacy" lang="uk" hreflang="uk">УКР</a></nav>
   </div>
 </header>
 
