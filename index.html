@@ -159,10 +159,7 @@
     transition: border-color .2s ease;
   }
   .bar-cta:hover { border-color: color-mix(in srgb, var(--ink) 30%, transparent); }
-  .crumbs { display: flex; align-items: center; gap: 14px; }
-  .crumb.lang { font-size: .78rem; letter-spacing: .08em; padding: 3px 9px; color: var(--muted); text-decoration: none;
-    border: 1px solid color-mix(in srgb, var(--muted) 40%, transparent); border-radius: 999px; }
-  .crumb.lang:hover { color: var(--ink); border-color: color-mix(in srgb, var(--ink) 35%, transparent); }
+  .crumbs { display: flex; align-items: center; }
 
   /* ---------- Hero ---------- */
   .hero { padding-block: clamp(28px, 7vh, 84px) clamp(56px, 9vh, 110px); }
@@ -363,6 +360,26 @@
   footer, footer a { color: var(--muted); font-size: .9rem; }
   footer nav { display: flex; gap: 22px; flex-wrap: wrap; }
   .disclaimer { margin-top: 18px; font-size: .85rem; color: var(--muted); max-width: 68ch; }
+  .language-switch { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
+  .language-switch .active { color: var(--ink); font-weight: 600; }
+  .language-switch a { text-underline-offset: 3px; }
+
+  .language-suggestion {
+    position: fixed; z-index: 20; inset-inline-start: clamp(16px, 3vw, 36px); bottom: clamp(16px, 3vw, 32px);
+    display: flex; align-items: center; gap: 14px;
+    max-width: min(360px, calc(100vw - 32px)); padding: 13px 14px 13px 17px;
+    background: color-mix(in srgb, var(--surface) 94%, var(--canvas));
+    border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow);
+  }
+  .language-suggestion[hidden] { display: none; }
+  .language-suggestion a { color: var(--ink); font-size: .92rem; font-weight: 600; text-decoration: none; }
+  .language-suggestion a span { color: var(--panic); }
+  .language-suggestion button {
+    width: 30px; height: 30px; flex: none; border: 0; border-radius: 50%;
+    background: transparent; color: var(--muted); font: inherit; font-size: 1.15rem;
+    cursor: pointer;
+  }
+  .language-suggestion button:hover { background: var(--line); color: var(--ink); }
 
   /* Reveal on scroll (progressive enhancement) */
   @media (prefers-reduced-motion: no-preference) {
@@ -405,7 +422,7 @@
 <header class="wrap">
   <div class="bar">
     <a class="wordmark" href="#"><span class="re">Re<svg viewBox="0 0 40 8" preserveAspectRatio="none" aria-hidden="true"><path d="M1.5 6.2 Q20 1.2 38.5 6.2"/></svg></span>ground</a>
-    <nav class="crumbs"><a class="crumb lang" href="/ua/" lang="uk" hreflang="uk">УКР</a><a class="bar-cta" href="#get">Get the app</a></nav>
+    <nav class="crumbs"><a class="bar-cta" href="#get">Get the app</a></nav>
   </div>
 </header>
 
@@ -632,12 +649,18 @@
         <a href="/blog/">Blog</a>
         <a href="/privacy">Privacy policy</a>
         <a href="mailto:mmcydesign@gmail.com">mmcydesign@gmail.com</a>
+        <span class="language-switch" aria-label="Language"><span class="active" aria-current="true">English</span><span aria-hidden="true">·</span><a href="/ua/" lang="uk" hreflang="uk" data-language-choice="uk">Українська</a></span>
       </nav>
     </div>
     <p class="disclaimer">Reground is a self-care toolkit, not medical care. If you&rsquo;re struggling,
       a mental-health professional can help in ways an app can&rsquo;t.</p>
   </div>
 </footer>
+
+<aside class="language-suggestion" id="languageSuggestion" aria-label="Language suggestion" aria-live="polite" hidden>
+  <a href="/ua/" lang="uk" hreflang="uk" data-language-choice="uk">Відкрити українську версію <span aria-hidden="true">→</span></a>
+  <button type="button" aria-label="Dismiss language suggestion">×</button>
+</aside>
 
 <script>
   document.documentElement.classList.add('js');
@@ -646,6 +669,35 @@
   (function () {
     var t = new URLSearchParams(location.search).get('theme');
     if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+  })();
+
+  /* Suggest the browser language once, while respecting a manual choice. */
+  (function () {
+    var current = document.documentElement.lang;
+    var browserIsUkrainian = (navigator.languages || [navigator.language || '']).some(function (language) {
+      return language.toLowerCase().indexOf('uk') === 0;
+    });
+    var browserLanguage = browserIsUkrainian ? 'uk' : 'en';
+    var preferenceKey = 'reground-language-preference';
+    var dismissedKey = 'reground-language-suggestion-' + current;
+    var preference = localStorage.getItem(preferenceKey);
+    var suggestion = document.getElementById('languageSuggestion');
+    var forcePreview = new URLSearchParams(location.search).get('language-suggestion') === '1';
+
+    document.querySelectorAll('[data-language-choice]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        localStorage.setItem(preferenceKey, link.dataset.languageChoice);
+      });
+    });
+
+    if (forcePreview || (!preference && browserLanguage !== current && !localStorage.getItem(dismissedKey))) {
+      window.setTimeout(function () { suggestion.hidden = false; }, 500);
+    }
+
+    suggestion.querySelector('button').addEventListener('click', function () {
+      suggestion.hidden = true;
+      localStorage.setItem(dismissedKey, '1');
+    });
   })();
 
   /* Orbiting dots — mirrors the app's pacer ornament */
