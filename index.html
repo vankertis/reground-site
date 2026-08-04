@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Reground, a self-care toolkit for the moment your chest tightens</title>
+<link rel="canonical" href="https://reground.pro/">
+<link rel="alternate" hreflang="en" href="https://reground.pro/">
+<link rel="alternate" hreflang="uk" href="https://reground.pro/ua/">
+<link rel="alternate" hreflang="x-default" href="https://reground.pro/">
 <meta name="description" content="22 calming techniques with honest evidence labels, organized by how you feel right now. No account, no analytics, no subscription. Free to try, $5.99 once.">
 <meta property="og:title" content="Reground, Self-Care Toolkit">
 <meta property="og:description" content="Open the app, tap once, and the phone breathes with you. Private by design. Pay once, no subscription.">
@@ -155,6 +159,10 @@
     transition: border-color .2s ease;
   }
   .bar-cta:hover { border-color: color-mix(in srgb, var(--ink) 30%, transparent); }
+  .crumbs { display: flex; align-items: center; gap: 14px; }
+  .crumb.lang { font-size: .78rem; letter-spacing: .08em; padding: 3px 9px; color: var(--muted); text-decoration: none;
+    border: 1px solid color-mix(in srgb, var(--muted) 40%, transparent); border-radius: 999px; }
+  .crumb.lang:hover { color: var(--ink); border-color: color-mix(in srgb, var(--ink) 35%, transparent); }
 
   /* ---------- Hero ---------- */
   .hero { padding-block: clamp(28px, 7vh, 84px) clamp(56px, 9vh, 110px); }
@@ -397,7 +405,7 @@
 <header class="wrap">
   <div class="bar">
     <a class="wordmark" href="#"><span class="re">Re<svg viewBox="0 0 40 8" preserveAspectRatio="none" aria-hidden="true"><path d="M1.5 6.2 Q20 1.2 38.5 6.2"/></svg></span>ground</a>
-    <a class="bar-cta" href="#get">Get the app</a>
+    <nav class="crumbs"><a class="crumb lang" href="/ua/" lang="uk" hreflang="uk">УКР</a><a class="bar-cta" href="#get">Get the app</a></nav>
   </div>
 </header>
 
