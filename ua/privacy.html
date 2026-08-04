@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reground, Політика приватності</title>
+<meta name="description" content="Reground не збирає жодних даних. Без акаунта, без сервера, без аналітики — усе, що ви пишете, малюєте чи практикуєте, залишається на вашому пристрої.">
+<link rel="canonical" href="https://reground.pro/ua/privacy">
+<link rel="alternate" hreflang="en" href="https://reground.pro/privacy">
+<link rel="alternate" hreflang="uk" href="https://reground.pro/ua/privacy">
+<link rel="alternate" hreflang="x-default" href="https://reground.pro/privacy">
+<meta property="og:image" content="https://reground.pro/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://reground.pro/assets/og.png">
+<meta name="theme-color" content="#f9f6f1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131417" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%235d84aa' d='M32 6c11 0 22 8.5 23.5 20.5C57 38.5 50 52 37.5 55.5 25 59 11.5 52 8 39.5 4.5 27 11 14 21.5 9.2 25 7.1 28.5 6 32 6z'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root {
+    --canvas: #f9f6f1;
+    --surface: #ffffff;
+    --ink: #25272e;
+    --muted: #565962;
+    --line: rgba(37, 39, 46, .09);
+    --panic: #5d84aa;
+    --tense: #668e73;
+    --ruminating: #8771ab;
+    --serif: ui-serif, "New York", Georgia, "Iowan Old Style", "Times New Roman", serif;
+    --sans: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --canvas: #131417; --surface: #202125; --ink: #eceae6; --muted: #a6a49d;
+      --line: rgba(236, 234, 230, .12);
+      --panic: #7aa2c8; --tense: #82ab90; --ruminating: #a592c8;
+    }
+  }
+  html[data-theme="dark"] {
+    --canvas: #131417; --surface: #202125; --ink: #eceae6; --muted: #a6a49d;
+    --line: rgba(236, 234, 230, .12);
+    --panic: #7aa2c8; --tense: #82ab90; --ruminating: #a592c8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2 { font-family: var(--serif); font-weight: 500; text-wrap: balance; }
+  p { text-wrap: pretty; }
+  a { color: inherit; }
+
+  .atmosphere {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(52% 38% at 82% 4%, color-mix(in srgb, var(--panic) 14%, transparent), transparent 70%),
+      radial-gradient(44% 34% at 6% 46%, color-mix(in srgb, var(--tense) 8%, transparent), transparent 70%);
+  }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding-inline: clamp(20px, 4vw, 48px); }
+  .wrap-wide { max-width: 1120px; }
+
+  header.site { padding-block: clamp(20px, 3.5vh, 36px); }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  /* W1s lockup: "Re" standing on the symmetric hill, the rest walks free. */
+  .wordmark { font-family: var(--serif); font-size: 1.45rem; letter-spacing: .01em; text-decoration: none; display: inline-block; }
+  .wordmark .re { position: relative; }
+  .wordmark .re svg { position: absolute; left: -2px; bottom: -6px; width: calc(100% + 4px); height: 6px; overflow: visible; }
+  .wordmark .re path { stroke: var(--panic); stroke-width: 2.4; fill: none; stroke-linecap: round; }
+  .bar-back {
+    font-size: .92rem; font-weight: 600; text-decoration: none;
+    border: 1px solid var(--line); border-radius: 999px; padding: 12px 20px;
+    background: color-mix(in srgb, var(--surface) 65%, transparent);
+    transition: border-color .2s ease;
+  }
+  .bar-back:hover { border-color: color-mix(in srgb, var(--ink) 30%, transparent); }
+  .crumbs { display: flex; align-items: center; gap: 14px; }
+  .crumb.lang { font-size: .78rem; letter-spacing: .08em; padding: 3px 9px; color: var(--muted); text-decoration: none;
+    border: 1px solid color-mix(in srgb, var(--muted) 40%, transparent); border-radius: 999px; }
+  .crumb.lang:hover { color: var(--ink); border-color: color-mix(in srgb, var(--ink) 35%, transparent); }
+
+  main { padding-block: clamp(36px, 7vh, 72px) clamp(72px, 10vh, 120px); }
+
+  h1 { font-size: clamp(2.1rem, 4.5vw, 3rem); line-height: 1.1; letter-spacing: -.012em; }
+  .meta { color: var(--muted); font-size: .95rem; margin-top: 10px; }
+
+  .promise {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 20px; padding: clamp(20px, 3vw, 28px);
+    margin-block: clamp(28px, 4vh, 40px);
+    box-shadow: 0 24px 60px -36px rgba(37, 39, 46, .25);
+  }
+  .promise p { font-family: var(--serif); font-size: 1.15rem; line-height: 1.55; }
+  .promise .stays { color: var(--tense); }
+
+  h2 {
+    font-size: clamp(1.35rem, 2.4vw, 1.65rem); line-height: 1.2;
+    margin-top: clamp(36px, 5vh, 52px);
+    display: flex; align-items: center; gap: 12px;
+  }
+  h2::before {
+    content: ""; width: 13px; height: 13px; flex: none;
+    background: var(--tint, var(--panic));
+    border-radius: 46% 54% 57% 43% / 51% 44% 56% 49%;
+  }
+  h2 + p, p + p { margin-top: 12px; }
+
+  main p { color: var(--muted); max-width: 62ch; }
+  main p strong { color: var(--ink); font-weight: 600; }
+  main a { color: color-mix(in srgb, var(--panic) 70%, var(--ink)); }
+
+  footer { border-top: 1px solid var(--line); padding-block: 32px 44px; }
+  footer, footer a { color: var(--muted); font-size: .9rem; }
+  .foot-grid { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; align-items: baseline; }
+  footer nav { display: flex; gap: 22px; flex-wrap: wrap; }
+
+  :focus-visible { outline: 2px solid var(--panic); outline-offset: 3px; border-radius: 6px; }
+</style>
+<!-- Google tag (gtag.js) — analytics-only consent: first-party _ga cookie,
+     all ad storage/signals denied. No banner. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9NYC4W5MNZ"></script>
+<script>
+  if (location.hostname !== 'reground.pro') { window['ga-disable-G-9NYC4W5MNZ'] = true; }
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted'
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-9NYC4W5MNZ');
+</script>
+</head>
+<body>
+<div class="atmosphere" aria-hidden="true"></div>
+
+<header class="site">
+  <div class="wrap wrap-wide bar">
+    <a class="wordmark" href="/ua/"><span class="re">Re<svg viewBox="0 0 40 8" preserveAspectRatio="none" aria-hidden="true"><path d="M1.5 6.2 Q20 1.2 38.5 6.2"/></svg></span>ground</a>
+    <nav class="crumbs"><a class="bar-back" href="/ua/">Про застосунок</a><a class="crumb lang" href="/privacy" lang="en" hreflang="en">EN</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Політика приватності</h1>
+  <p class="meta">Чинна з 8 липня 2026 · стосується iOS-застосунку Reground ·
+  <a href="#support">потрібна допомога із застосунком?</a></p>
+
+  <div class="promise">
+    <p><strong>Коротко:</strong> Reground не збирає про вас жодних даних. Немає акаунта,
+    немає сервера, немає аналітики. Усе, що ви пишете, малюєте чи практикуєте,
+    <span class="stays">залишається на вашому пристрої.</span> Ми не змогли б прочитати ваш
+    щоденник, навіть якби хотіли, — він до нас просто не потрапляє.</p>
+  </div>
+
+  <h2 style="--tint: var(--panic)">Що ми збираємо</h2>
+  <p>Нічого. У Reground немає реєстрації, входу та серверної частини. Застосунок ніколи не
+  передає ваш контент, вашу активність чи вашу особу ні нам, ні будь-кому іншому. Ми не
+  використовуємо аналітику, рекламу чи будь-яке стеження, і в застосунку немає сторонніх
+  SDK.</p>
+
+  <h2 style="--tint: var(--tense)">Де зберігається ваш контент</h2>
+  <p>Записи щоденника, записи в щоденнику думок, малюнки, історія сесій, обране й
+  налаштування зберігаються лише в локальному сховищі застосунку на вашому пристрої. Якщо ви
+  користуєтеся iCloud Backup чи локальними резервними копіями, цей контент потрапляє в
+  резервні копії пристрою (це між вами і Apple — ми доступу не маємо). Видалення застосунку
+  назавжди видаляє весь цей контент.</p>
+
+  <h2 style="--tint: var(--ruminating)">Покупки</h2>
+  <p>Reground пропонує одну необов'язкову одноразову покупку, яку повністю обробляє Apple
+  через ваш Apple&nbsp;ID. Ми ніколи не бачимо ваших платіжних даних, імені чи адреси. Apple
+  не надає нам жодної інформації, що ідентифікує покупців особисто. Покупку можна відновити
+  на будь-якому пристрої, де виконано вхід у той самий Apple&nbsp;ID, а повернення коштів
+  здійснює Apple за своїми стандартними умовами.</p>
+
+  <h2 style="--tint: var(--panic)">Інформація про здоров'я</h2>
+  <p>Будь-що з написаного вами в Reground може бути для вас чутливим. Саме тому воно ніколи
+  не залишає ваш телефон. Reground — набір інструментів самодопомоги, а не медична допомога:
+  він не діагностує, не лікує й не моніторить жодних станів. Якщо вам важко, фахівець із
+  психічного здоров'я допоможе так, як не зможе жоден застосунок.</p>
+
+  <h2 style="--tint: var(--tense)">Діти</h2>
+  <p>Reground не адресований дітям до 13 років, а оскільки ми не збираємо даних ні від кого,
+  ми не збираємо їх і від дітей.</p>
+
+  <h2 style="--tint: var(--ruminating)">Зміни в цій політиці</h2>
+  <p>Якщо в Reground колись з'явиться функція, що змінить цю картину (наприклад,
+  необов'язкова синхронізація через iCloud), спершу буде оновлено цю політику, зміна діятиме
+  лише за вашою явною згодою (opt-in), і застосунок скаже про це прямо. Чинна обіцянка
+  залишається: за замовчуванням ніщо не залишає ваш телефон.</p>
+
+  <h2 id="support" style="--tint: var(--panic)">Підтримка і контакти</h2>
+  <p>Запитання, помилки чи будь-що щодо цієї політики? Напишіть на
+  <a href="mailto:mmcydesign@gmail.com">mmcydesign@gmail.com</a> — лист потрапить до Максима
+  Червинського, який розробляє і видає Reground. Покупками, чеками й поверненням коштів
+  опікується Apple через ваш Apple&nbsp;ID; з усім іншим звертайтеся до нас.</p>
+</main>
+
+<footer>
+  <div class="wrap wrap-wide foot-grid">
+    <span>© 2026 Reground · зроблено тихо</span>
+    <nav aria-label="Footer">
+      <a href="/ua/">Про застосунок</a>
+      <a href="https://apps.apple.com/app/id6790840763">App Store</a>
+      <a href="mailto:mmcydesign@gmail.com">mmcydesign@gmail.com</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var t = new URLSearchParams(location.search).get('theme');
+    if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+  })();
+</script>
+</body>
+</html>
