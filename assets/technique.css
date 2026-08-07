@@ -197,6 +197,28 @@ footer.site .disclaimer { margin-top: 16px; font-size: .85rem; color: var(--mute
 .cost-math .big { font-family: var(--serif); font-size: clamp(1.3rem, 3vw, 1.7rem); }
 .cost-math p { margin-top: 8px; }
 
+/* Five-year cost as a real table (2026-08-07): the figures were a comma-separated
+   prose list, so nothing tied a number to its app for a parser. No min-width here —
+   the reading column is 640px and .compare already proved a wider floor scrolls. */
+.cost-table { width: 100%; border-collapse: collapse; }
+.cost-table th { text-align: left; font-family: var(--sans); font-size: .7rem; font-weight: 650;
+  color: var(--muted); letter-spacing: .07em; text-transform: uppercase; padding: 0 12px 8px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 45%, transparent); }
+.cost-table td { padding: 12px 12px 12px 0; vertical-align: baseline;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); }
+.cost-table tbody tr:last-child td { border-bottom: 0; }
+.cost-table .amt { font-family: var(--serif); font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+  white-space: nowrap; font-variant-numeric: tabular-nums; padding-right: 20px; }
+/* "about $300" is an estimate, not a listed price: the qualifier is set small so the
+   figures still line up as figures. */
+.cost-table .approx { font-family: var(--sans); font-size: .78rem; color: var(--muted); }
+.cost-table .app { font-family: var(--serif); font-size: 1.02rem; }
+.cost-table .how { font-size: .86rem; color: var(--muted); }
+.cost-table .us .app::before { content: ""; display: inline-block; width: .62em; height: .62em;
+  margin-right: 8px; vertical-align: baseline; border-radius: 46% 54% 52% 48% / 52% 46% 54% 48%;
+  background: var(--accent, var(--panic)); }
+.cost-table + p { margin-top: 18px; }
+
 .checked { font-size: .8rem; color: var(--muted); margin-top: 10px; }
 
 /* Keyboard focus parity with hover (audit 2026-07-16) */
