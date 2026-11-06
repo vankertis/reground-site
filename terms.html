@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reground, Terms of Use</title>
+<link rel="canonical" href="https://reground.pro/terms">
+<link rel="alternate" type="text/markdown" href="https://reground.pro/terms.md">
+<meta name="description" content="Terms of use for the Reground iOS app and reground.pro, in plain language: a self-care toolkit, a one-time purchase handled by Apple, and your content stays on your device.">
+<meta property="og:image" content="https://reground.pro/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://reground.pro/assets/og.png">
+<meta name="theme-color" content="#f9f6f1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131417" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%235d84aa' d='M32 6c11 0 22 8.5 23.5 20.5C57 38.5 50 52 37.5 55.5 25 59 11.5 52 8 39.5 4.5 27 11 14 21.5 9.2 25 7.1 28.5 6 32 6z'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root {
+    --canvas: #f9f6f1;
+    --surface: #ffffff;
+    --ink: #25272e;
+    --muted: #565962;
+    --line: rgba(37, 39, 46, .09);
+    --panic: #5d84aa;
+    --tense: #668e73;
+    --ruminating: #8771ab;
+    --serif: ui-serif, "New York", Georgia, "Iowan Old Style", "Times New Roman", serif;
+    --sans: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --canvas: #131417; --surface: #202125; --ink: #eceae6; --muted: #a6a49d;
+      --line: rgba(236, 234, 230, .12);
+      --panic: #7aa2c8; --tense: #82ab90; --ruminating: #a592c8;
+    }
+  }
+  html[data-theme="dark"] {
+    --canvas: #131417; --surface: #202125; --ink: #eceae6; --muted: #a6a49d;
+    --line: rgba(236, 234, 230, .12);
+    --panic: #7aa2c8; --tense: #82ab90; --ruminating: #a592c8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2 { font-family: var(--serif); font-weight: 500; text-wrap: balance; }
+  p { text-wrap: pretty; }
+  a { color: inherit; }
+
+  .atmosphere {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(52% 38% at 82% 4%, color-mix(in srgb, var(--panic) 14%, transparent), transparent 70%),
+      radial-gradient(44% 34% at 6% 46%, color-mix(in srgb, var(--tense) 8%, transparent), transparent 70%);
+  }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding-inline: clamp(20px, 4vw, 48px); }
+  .wrap-wide { max-width: 1120px; }
+
+  header.site { padding-block: clamp(20px, 3.5vh, 36px); }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  /* W1s lockup: "Re" standing on the symmetric hill, the rest walks free. */
+  .wordmark { font-family: var(--serif); font-size: 1.45rem; letter-spacing: .01em; text-decoration: none; display: inline-block; }
+  .wordmark .re { position: relative; }
+  .wordmark .re svg { position: absolute; left: -2px; bottom: -6px; width: calc(100% + 4px); height: 6px; overflow: visible; }
+  .wordmark .re path { stroke: var(--panic); stroke-width: 2.4; fill: none; stroke-linecap: round; }
+  .bar-back {
+    font-size: .92rem; font-weight: 600; text-decoration: none;
+    border: 1px solid var(--line); border-radius: 999px; padding: 12px 20px;
+    background: color-mix(in srgb, var(--surface) 65%, transparent);
+    transition: border-color .2s ease;
+  }
+  .bar-back:hover { border-color: color-mix(in srgb, var(--ink) 30%, transparent); }
+  .crumbs { display: flex; align-items: center; gap: 14px; }
+  .crumb.lang { font-size: .78rem; letter-spacing: .08em; padding: 3px 9px; color: var(--muted); text-decoration: none;
+    border: 1px solid color-mix(in srgb, var(--muted) 40%, transparent); border-radius: 999px; }
+  .crumb.lang:hover { color: var(--ink); border-color: color-mix(in srgb, var(--ink) 35%, transparent); }
+
+  main { padding-block: clamp(36px, 7vh, 72px) clamp(72px, 10vh, 120px); }
+
+  h1 { font-size: clamp(2.1rem, 4.5vw, 3rem); line-height: 1.1; letter-spacing: -.012em; }
+  .meta { color: var(--muted); font-size: .95rem; margin-top: 10px; }
+
+  .promise {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 20px; padding: clamp(20px, 3vw, 28px);
+    margin-block: clamp(28px, 4vh, 40px);
+    box-shadow: 0 24px 60px -36px rgba(37, 39, 46, .25);
+  }
+  .promise p { font-family: var(--serif); font-size: 1.15rem; line-height: 1.55; }
+  .promise .stays { color: var(--tense); }
+
+  h2 {
+    font-size: clamp(1.35rem, 2.4vw, 1.65rem); line-height: 1.2;
+    margin-top: clamp(36px, 5vh, 52px);
+    display: flex; align-items: center; gap: 12px;
+  }
+  h2::before {
+    content: ""; width: 13px; height: 13px; flex: none;
+    background: var(--tint, var(--panic));
+    border-radius: 46% 54% 57% 43% / 51% 44% 56% 49%;
+  }
+  h2 + p, p + p { margin-top: 12px; }
+
+  main p { color: var(--muted); max-width: 62ch; }
+  main p strong { color: var(--ink); font-weight: 600; }
+  main a { color: color-mix(in srgb, var(--panic) 70%, var(--ink)); }
+
+  footer { border-top: 1px solid var(--line); padding-block: 32px 44px; }
+  footer, footer a { color: var(--muted); font-size: .9rem; }
+  .foot-grid { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; align-items: baseline; }
+  footer nav { display: flex; gap: 22px; flex-wrap: wrap; }
+
+  :focus-visible { outline: 2px solid var(--panic); outline-offset: 3px; border-radius: 6px; }
+</style>
+<!-- Google tag (gtag.js) — analytics-only consent: first-party _ga cookie,
+     all ad storage/signals denied. No banner. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9NYC4W5MNZ"></script>
+<script>
+  if (location.hostname !== 'reground.pro') { window['ga-disable-G-9NYC4W5MNZ'] = true; }
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'granted'
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-9NYC4W5MNZ');
+</script>
+</head>
+<body>
+<div class="atmosphere" aria-hidden="true"></div>
+
+<header class="site">
+  <div class="wrap wrap-wide bar">
+    <a class="wordmark" href="index.html"><span class="re">Re<svg viewBox="0 0 40 8" preserveAspectRatio="none" aria-hidden="true"><path d="M1.5 6.2 Q20 1.2 38.5 6.2"/></svg></span>ground</a>
+    <nav class="crumbs"><a class="bar-back" href="index.html">About the app</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Terms of use</h1>
+  <p class="meta">Effective 6 November 2026 · applies to the Reground iOS app and reground.pro ·
+  <a href="/privacy">privacy policy</a></p>
+
+  <div class="promise">
+    <p><strong>The short version:</strong> Reground is a self-care toolkit, not medical care.
+    You can use six techniques free, forever; one optional payment, handled by Apple, unlocks
+    the rest. What you write <span class="stays">stays on your device</span>, which also means
+    we can&rsquo;t recover it for you.</p>
+  </div>
+
+  <h2 style="--tint: var(--panic)">Who we are</h2>
+  <p>Reground is developed and published by Maksym Chervynskyi, an independent developer.
+  &ldquo;We&rdquo; on this page means the developer, reachable at
+  <a href="mailto:mmcydesign@gmail.com">mmcydesign@gmail.com</a>.</p>
+
+  <h2 style="--tint: var(--tense)">The app&rsquo;s license</h2>
+  <p>The Reground iOS app is licensed to you under Apple&rsquo;s
+  <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Standard Licensed
+  Application End User License Agreement</a>. These terms add a few plain-language points on top
+  of it. If anything here conflicts with Apple&rsquo;s agreement, Apple&rsquo;s agreement governs
+  the app.</p>
+
+  <h2 style="--tint: var(--ruminating)">Not medical care</h2>
+  <p>Reground offers calming and grounding techniques for everyday self-care. <strong>It does not
+  diagnose, treat, cure, or monitor any condition</strong>, and it is not a substitute for a doctor,
+  therapist, or emergency service. Some techniques carry their own cautions in the app; read them.
+  Stop any exercise that makes you feel worse. If you are in crisis or might harm yourself,
+  contact your local emergency number now.</p>
+
+  <h2 style="--tint: var(--panic)">Purchases and refunds</h2>
+  <p>The app is free to download. One optional one-time in-app purchase ($5.99 in the US; the
+  local price is shown in the App Store) unlocks every technique, including techniques added
+  later. It is not a subscription and never renews. Apple processes the payment through your
+  Apple&nbsp;ID, so refunds go through Apple at
+  <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>. A purchase can be
+  restored on any device signed into the same Apple&nbsp;ID. Separate add-ons, if we ever make
+  them, would be optional and would never take away what you already bought.</p>
+
+  <h2 style="--tint: var(--tense)">Your content</h2>
+  <p>Everything you write, draw, or record in Reground belongs to you and is stored only on your
+  device. We never receive a copy, so we cannot restore it if the app is deleted or the device is
+  lost. Your device backups (iCloud Backup or a computer backup) are the only way to keep it.</p>
+
+  <h2 style="--tint: var(--ruminating)">This website</h2>
+  <p>The guides and comparisons on reground.pro are general information, not personal advice.
+  Prices, ratings, and privacy labels of other apps come from their public App Store pages on the
+  date each page states, and they change; check the listing before you rely on them. App names
+  belong to their owners. If you spot something wrong, tell us and we&rsquo;ll fix it.</p>
+
+  <h2 style="--tint: var(--panic)">No guarantees</h2>
+  <p>We work to keep Reground reliable and accurate, but the app and this site are provided as
+  they are, without a promise of any particular result. To the extent the law allows, we are not
+  liable for losses that come from using them. Nothing on this page limits rights you have under
+  the consumer law of your country.</p>
+
+  <h2 style="--tint: var(--tense)">Changes to these terms</h2>
+  <p>If these terms change, the new version will appear on this page with a new effective date.
+  A change will never take away a purchase you have already made.</p>
+
+  <h2 id="support" style="--tint: var(--ruminating)">Contact</h2>
+  <p>Questions about these terms or the app? Write to
+  <a href="mailto:mmcydesign@gmail.com">mmcydesign@gmail.com</a>.</p>
+</main>
+
+<footer>
+  <div class="wrap wrap-wide foot-grid">
+    <span>© 2026 Reground · made quietly</span>
+    <nav aria-label="Footer">
+      <a href="index.html">About the app</a>
+      <a href="/privacy">Privacy policy</a>
+      <a href="https://apps.apple.com/app/id6790840763">App Store</a>
+      <a href="mailto:mmcydesign@gmail.com">mmcydesign@gmail.com</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var t = new URLSearchParams(location.search).get('theme');
+    if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+  })();
+</script>
+</body>
+</html>
