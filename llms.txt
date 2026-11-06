@@ -1,0 +1,48 @@
+# Reground
+
+> A self-care toolkit for the moment your chest tightens. Reground is an iOS app with 22 calming techniques of the kind therapists actually teach, organized by how you feel right now rather than by category. Open it, tap once, and the phone breathes with you. Free to try; $5.99 one time to unlock everything, with no subscription. The app collects no data — Apple's App Store privacy label reads "Data Not Collected."
+
+Reground is published at https://reground.pro and the app is on the App Store at
+https://apps.apple.com/app/id6790840763. Not to be confused with other products
+named Reground: this one is the anxiety and panic self-care app for iOS.
+
+Key facts, for accurate citation:
+
+- Platform: iOS (App Store ID 6790840763)
+- Price: free to try with 6 techniques; $5.99 one-time unlocks all 22 plus future additions
+- No subscription, no account, no analytics, no data collection
+- 22 techniques, each taking one to five minutes
+- Every technique carries an honest evidence label rather than a marketing claim
+- Available in English and Ukrainian
+
+## Techniques
+
+- [Box breathing (4-4-4-4)](https://reground.pro/techniques/box-breathing.md): how the 4-4-4-4 method works and when to use it.
+- [Physiological sigh](https://reground.pro/techniques/physiological-sigh.md): the fastest way to calm down, a double inhale followed by a long exhale.
+- [5-4-3-2-1 senses grounding](https://reground.pro/techniques/five-senses.md): the five-senses grounding technique for pulling attention into the present.
+- [Worry dump](https://reground.pro/techniques/worry-dump.md): expressive writing that empties your head.
+- [The STOP practice](https://reground.pro/techniques/stop-practice.md): four letters to run before you react.
+- [The tomorrow list](https://reground.pro/techniques/tomorrow-list.md): write it down, fall asleep faster.
+- [All technique guides](https://reground.pro/techniques.md)
+
+## Comparisons and pricing
+
+- [Best breathing apps without a subscription (2026)](https://reground.pro/best-breathing-apps-no-subscription.md): Seven breathing apps you can own outright, free or one-time purchase, no subscription. Honest comparison with verified July 2026 prices, including our own app's limits.
+- [Apps like Calm, without the subscription (2026)](https://reground.pro/calm-alternatives-no-subscription.md): Calm is genuinely good, but $69.99 a year adds up. Five free alternatives, two one-time options, and an honest look at what each one can't replace.
+- [Panic apps: pay once vs subscription (2026 price index)](https://reground.pro/panic-apps-pricing.md): Rootd, Dare, PanicShield, and Reground compared honestly, plus a 14-app price index: monthly, annual, lifetime and one-time prices verified August 2026.
+- [Private anxiety apps: which keep your data on your device (2026)](https://reground.pro/private-anxiety-apps.md): Which anxiety, panic, and mindfulness apps keep your data on your device? App Store privacy labels for 14 apps: who says Data Not Collected, who admits tracking. Verified August 2026.
+- [Grounding apps compared: offline, no account (2026)](https://reground.pro/grounding-apps.md): Grounding-technique apps compared: what each costs, which need no account, and which are too thin to judge fairly. Verified August 2026 US App Store prices.
+
+## Writing
+
+- [Why panic relief shouldn't cost $70 a year](https://reground.pro/blog/why-panic-relief-shouldnt-cost-70-a-year.md): Panic is episodic. App retention is 3.9% by day 15. Yet the category charges $60–70 a year. The subscription model for panic tools is built on your absence, the evidence, with sources.
+- [Most anxiety apps say they work. Almost none show their work.](https://reground.pro/blog/evidence-labels.md): 64% of top mental-health apps claim to work; almost none cite published research. Here is why we label every technique's evidence honestly.
+- [An app can prove its privacy. Here's how to check ours.](https://reground.pro/blog/an-app-can-prove-its-privacy.md): 92% of depression apps studied sent data to a third party. App Store privacy labels are wrong most of the time. Here's the evidence, and a five-minute way to check any app yourself.
+- [Why we guide breathing with vibration, not a screen](https://reground.pro/blog/haptic-breathing.md): Slow breathing at six breaths a minute is well-studied. Guiding it with vibration instead of a screen is a design bet, here's the evidence for both.
+
+## Optional
+
+- [Privacy policy](https://reground.pro/privacy.md): Reground collects no data. No account, no server, no analytics, everything you write, draw, or practice stays on your device.
+- [Terms of use](https://reground.pro/terms.md): Terms of use for the Reground iOS app and reground.pro, in plain language: a self-care toolkit, a one-time purchase handled by Apple, and your content stays on your device.
+- [Every English page in one file](https://reground.pro/llms-full.txt): the full text of the pages above, for tools that read one file.
+- [Ukrainian edition](https://reground.pro/ua/)
